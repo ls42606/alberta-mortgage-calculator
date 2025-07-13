@@ -1,0 +1,57 @@
+{
+  "name": "alberta-mortgage-calculator",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A comprehensive mortgage calculator suite for Alberta real estate professionals",
+  "keywords": [
+    "mortgage",
+    "calculator",
+    "alberta",
+    "real-estate",
+    "finance"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "deploy": "npm run build && npm run preview",
+    "test": "echo \"No tests yet\" && exit 0",
+    "automation:start": "node automation-startup.js",
+    "automation:dev": "NODE_ENV=development DEBUG=true node automation-startup.js",
+    "content:generate": "node -e \"import('./src/services/blogService.js').then(({BlogService}) => BlogService.getInstance().generateWeeklyContent())\"",
+    "analytics:export": "node -e \"import('./src/services/analyticsService.js').then(({AnalyticsService}) => AnalyticsService.getInstance().exportAnalytics('json').then(console.log))\"",
+    "design:optimize": "node -e \"import('./src/services/designService.js').then(({DesignService}) => DesignService.getInstance().optimizeDesignForConversion())\"",
+    "health:check": "node -e \"global.automationBootstrap?.healthCheck().then(console.log) || console.log('Automation not running')\""
+  },
+  "dependencies": {
+    "framer-motion": "^10.16.16",
+    "lucide-react": "^0.344.0",
+    "react": "^18.3.1",
+    "react-confetti": "^6.1.0",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "react-intersection-observer": "^9.5.3",
+    "react-router-dom": "^6.20.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.18",
+    "eslint": "^9.9.1",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.11",
+    "globals": "^15.9.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "terser": "^5.43.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.3.0",
+    "vite": "^5.4.2"
+  }
+}
