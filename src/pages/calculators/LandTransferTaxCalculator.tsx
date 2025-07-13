@@ -226,49 +226,6 @@ const LandTransferTaxCalculator: React.FC = () => {
         </div>
       </div>
 
-      {/* Information Section */}
-      <div className="mt-12 sm:mt-16 bg-gradient-to-r from-emerald-50 via-blue-50/50 to-emerald-50/50 rounded-3xl p-8 sm:p-12 border border-gray-200">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 text-center">Why Alberta Has No Land Transfer Tax</h3>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <DollarSign size={24} className="text-emerald-600" />
-            </div>
-            <h4 className="text-lg font-bold text-emerald-600 mb-3">Economic Policy</h4>
-            <p className="text-gray-600 leading-relaxed">
-              Alberta's government policy focuses on keeping housing affordable and encouraging real estate investment.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Building size={24} className="text-blue-600" />
-            </div>
-            <h4 className="text-lg font-bold text-blue-600 mb-3">Market Growth</h4>
-            <p className="text-gray-600 leading-relaxed">
-              No transfer tax helps stimulate the real estate market by reducing barriers to property transactions.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <MapPin size={24} className="text-yellow-600" />
-            </div>
-            <h4 className="text-lg font-bold text-yellow-600 mb-3">Competitive Advantage</h4>
-            <p className="text-gray-600 leading-relaxed">
-              This tax policy makes Alberta an attractive destination for homebuyers and investors from other provinces.
-            </p>
-          </div>
-        </div>
-        
-        <div className="mt-8 p-6 bg-white rounded-xl border border-emerald-200">
-          <p className="text-gray-700 leading-relaxed text-center">
-            <strong>Note:</strong> While Alberta has no provincial land transfer tax, some municipalities may have their own fees. 
-            Always consult with a local real estate professional for complete closing cost estimates.
-          </p>
-        </div>
-      </div>
 
       {/* Expert Advice CTA */}
       <div className="mt-12 sm:mt-16 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-3xl p-8 sm:p-12 text-white">
