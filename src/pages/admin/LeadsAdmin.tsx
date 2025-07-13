@@ -21,7 +21,7 @@ const LeadsAdmin: React.FC = () => {
 
   // Simple password protection
   const handleLogin = () => {
-    if (password === 'albertamortgage2024') {
+    if (password === 'albertamortgagecalculator2024') {
       setAuthenticated(true);
       fetchLeads();
     } else {

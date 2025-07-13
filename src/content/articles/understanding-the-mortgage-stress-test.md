@@ -16,7 +16,7 @@ The mortgage stress test is a federal regulation requiring borrowers to prove th
 
 ## Who Must Pass the Stress Test?
 
-**All Federally Regulated Lenders**: This includes major banks, credit unions, and mortgage finance companies.
+**All Federally Regulated Lenders**: This includes major financial institutions, credit unions, and mortgage finance companies.
 
 **All Mortgage Types**: 
 - Insured mortgages (less than 20% down)
@@ -111,21 +111,21 @@ The stress test typically reduces borrowing capacity by 15-20%. Here's how it af
 
 **Future Considerations**: The stress test rate is reviewed quarterly and can change based on economic conditions.
 
-## Working Around the Stress Test
+## Understanding Qualification Options
 
-**Alternative Lenders**: Some private lenders and credit unions may have different qualifying criteria, though often at higher rates.
+**Alternative Lenders**: Some financial institutions may have different qualifying criteria with varying terms.
 
-**Longer Terms**: Locking in rates for longer periods can provide payment certainty.
+**Longer Terms**: Extended rate commitment periods can provide payment certainty.
 
-**Rate Holds**: Getting pre-approved with a rate hold before rates increase.
+**Rate Holds**: Pre-approval applications can secure rates for specific periods.
 
-**Professional Guidance**: Working with experienced mortgage professionals who understand various lender requirements.
+**Professional Consultation**: Mortgage professionals understand various institutional requirements and qualification processes.
 
 ## Common Misconceptions
 
 **"The stress test doesn't apply to renewals"**: Only true if renewing with your current lender. Switching lenders requires re-qualifying.
 
-**"Private lenders don't stress test"**: Many still do, and those that don't often charge significantly higher rates.
+**"Alternative lenders don't stress test"**: Many still do, and those that don't often have different qualification criteria.
 
 **"Variable rates aren't stress tested"**: All mortgages are stress tested regardless of whether they're fixed or variable.
 

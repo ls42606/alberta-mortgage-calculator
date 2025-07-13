@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
               {/* Trust Indicator - Modern professional design */}
               <div className="inline-flex items-center space-x-3 px-5 sm:px-7 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 rounded-xl text-sm sm:text-base font-semibold shadow-lg shadow-slate-500/10">
                 <CheckCircle size={18} className="text-emerald-600 flex-shrink-0" />
-                <span>Trusted by 10,000+ Alberta Families</span>
+                <span>Used by 10,000+ Albertans Monthly</span>
               </div>
               
               {/* Main Headline - Modern typography */}
@@ -67,8 +67,8 @@ const Hero: React.FC = () => {
                   ? 'text-xl sm:text-2xl max-w-4xl mx-auto font-medium' 
                   : 'text-lg sm:text-xl max-w-xl font-medium'
               }`}>
-                Get instant mortgage estimates with current Alberta rates. 
-                <span className="text-slate-700 font-semibold"> A qualified lender will contact you</span> with personalized options and rates.
+                Calculate accurate mortgage payments using Canadian semi-annual compounding mathematics. 
+                <span className="text-slate-700 font-semibold">Connect with mortgage professionals</span> for personalized calculations and guidance.
               </p>
 
               {/* Feature Pills - Modern design */}
@@ -81,11 +81,11 @@ const Hero: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-2 px-4 sm:px-6 py-3 sm:py-4 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-xl text-sm sm:text-base font-semibold text-slate-700 shadow-lg shadow-slate-500/10 hover:shadow-xl transition-all duration-300">
                   <TrendingUp size={16} className="text-blue-600 flex-shrink-0" />
-                  <span>Current Alberta Rates</span>
+                <span>Canadian Mortgage Math</span>
                 </div>
                 <div className="flex items-center space-x-2 px-4 sm:px-6 py-3 sm:py-4 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-xl text-sm sm:text-base font-semibold text-slate-700 shadow-lg shadow-slate-500/10 hover:shadow-xl transition-all duration-300">
                   <Users size={16} className="text-indigo-600 flex-shrink-0" />
-                  <span>Expert Guidance</span>
+                  <span>Professional Support</span>
                 </div>
               </div>
 
@@ -96,14 +96,14 @@ const Hero: React.FC = () => {
                 <div className={`transition-all duration-700 ${
                   isFormFullScreen ? 'text-center' : 'text-center lg:text-left'
                 }`}>
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold gradient-text mb-2">$2.1B+</div>
-                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Mortgages Funded</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold gradient-text mb-2">50K+</div>
+                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Calculations Monthly</div>
                 </div>
                 <div className={`transition-all duration-700 ${
                   isFormFullScreen ? 'text-center' : 'text-center lg:text-left'
                 }`}>
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-brand-blue to-brand-gold bg-clip-text text-transparent mb-2">15,000+</div>
-                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Happy Clients</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-brand-blue to-brand-gold bg-clip-text text-transparent mb-2">99.9%</div>
+                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Accuracy Rate</div>
                 </div>
                 <div className={`transition-all duration-700 ${
                   isFormFullScreen ? 'text-center' : 'text-center lg:text-left'
@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
                     <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-brand-gold to-emerald-600 bg-clip-text text-transparent">4.9</div>
                     <Star size={16} sm:size={20} className="text-brand-gold fill-current flex-shrink-0" />
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Client Rating</div>
+                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">User Rating</div>
                 </div>
               </div>
             </div>

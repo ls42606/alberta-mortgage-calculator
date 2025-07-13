@@ -162,12 +162,12 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           <h3 className="text-xl font-bold text-gray-900 mb-4">Thank You!</h3>
           <p className="text-gray-600 mb-6 leading-relaxed">
             Your information has been received. A mortgage professional will contact you within 24 hours
-            to discuss your options and answer any questions you may have.
+            to provide personalized calculations and educational guidance.
           </p>
           <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
             <p className="text-emerald-800 text-sm font-medium">
-              <strong>Next Steps:</strong> Prepare any questions about your mortgage needs. 
-              Our expert will provide personalized advice based on your specific situation.
+              <strong>Next Steps:</strong> Prepare any questions about your mortgage calculations. 
+              Our professional will provide educational guidance based on your specific situation.
             </p>
           </div>
           {onClose && (
@@ -186,9 +186,9 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   return (
     <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xl">
       <div className="text-center mb-6">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Get Expert Advice</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Connect with Mortgage Professionals</h3>
         <p className="text-gray-600">
-          Speak with a mortgage professional about your options
+          Get personalized calculations and educational guidance
         </p>
       </div>
 
@@ -297,7 +297,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             ) : (
               <>
                 <Send size={20} />
-                <span>Get Expert Advice</span>
+                <span>Connect with Professionals</span>
               </>
             )}
           </button>

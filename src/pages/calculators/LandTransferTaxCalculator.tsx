@@ -273,13 +273,13 @@ const LandTransferTaxCalculator: React.FC = () => {
       {/* Expert Advice CTA */}
       <div className="mt-12 sm:mt-16 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-3xl p-8 sm:p-12 text-white">
         <div className="text-center">
-          <h3 className="text-2xl sm:text-3xl font-bold mb-4">Get Expert Advice on Your Alberta Purchase</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold mb-4">Connect with Mortgage Professionals</h3>
           <p className="text-emerald-100 mb-8 text-lg leading-relaxed max-w-3xl mx-auto">
-            Take advantage of Alberta's no land transfer tax policy! Our mortgage professionals can help you 
-            navigate the complete home buying process and ensure you're getting the best possible deal.
+            Take advantage of Alberta's no land transfer tax policy! Mortgage professionals can provide 
+            educational guidance on the complete home buying process and accurate calculations.
           </p>
           <button className="bg-white text-emerald-600 font-bold py-4 px-8 rounded-xl hover:bg-emerald-50 transition-colors duration-300 text-lg shadow-lg">
-            Speak with a Mortgage Expert
+            Connect with Professionals
           </button>
         </div>
       </div>
