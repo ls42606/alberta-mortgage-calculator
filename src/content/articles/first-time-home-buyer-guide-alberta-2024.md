@@ -51,11 +51,11 @@ A pre-approval gives you confidence when making offers and shows sellers you're 
 
 ## Alberta's Housing Markets in 2024
 
-**Calgary Market**: The market has shown resilience with steady price growth. Average home prices range from $450,000-$650,000 depending on the area. Popular first-time buyer areas include Airdrie, Cochrane, and newer developments in the southeast.
+**Calgary Market**: The market has shown resilience with steady price growth. Average home prices vary significantly by area and property type. Research different communities to find options that fit your budget.
 
-**Edmonton Market**: More affordable than Calgary, with average prices around $400,000-$550,000. Areas like Sherwood Park, St. Albert, and Spruce Grove offer good value for first-time buyers.
+**Edmonton Market**: Generally more affordable than Calgary, with diverse neighborhoods at various price points. Consider commute times and local amenities when choosing areas.
 
-**Regional Markets**: Smaller cities like Red Deer, Medicine Hat, and Lethbridge offer more affordable options, with homes often under $400,000.
+**Regional Markets**: Smaller Alberta cities often offer more affordable housing options, but factor in employment opportunities and access to services.
 
 ## The Stress Test Impact
 

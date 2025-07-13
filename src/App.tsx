@@ -25,6 +25,7 @@ import BlogPost from './pages/blog/BlogPost';
 
 // Admin Pages
 import { ContentDashboard } from './components/admin/ContentDashboard';
+import LeadsAdmin from './pages/admin/LeadsAdmin';
 
 // Component to handle hash navigation and scroll to top
 const ScrollToTop: React.FC = () => {
@@ -77,6 +78,7 @@ function App() {
         
         {/* Admin Dashboard */}
         <Route path="/admin" element={<ContentDashboard />} />
+        <Route path="/admin/leads" element={<LeadsAdmin />} />
       </Routes>
     </Router>
   );

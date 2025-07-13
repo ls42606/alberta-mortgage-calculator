@@ -55,9 +55,9 @@ To determine your maximum mortgage amount:
 
 ## Regional Variations in Alberta
 
-**Calgary**: Average home prices range from $450,000-$600,000 depending on the area. New developments in the suburbs often offer better value.
+**Calgary**: Home prices vary significantly by area and property type. Research different communities to understand local market conditions.
 
-**Edmonton**: Slightly more affordable than Calgary, with average prices around $400,000-$500,000. The city offers diverse neighborhoods at various price points.
+**Edmonton**: Generally offers more affordable options than Calgary. The city provides diverse neighborhoods with varying price ranges.
 
 **Rural Alberta**: Significantly more affordable housing options, but consider employment opportunities and commuting costs.
 

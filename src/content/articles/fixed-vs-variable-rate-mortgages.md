@@ -24,7 +24,7 @@ Choosing between a fixed or variable rate mortgage is one of the most important 
 
 **Rate Environment**: After years of historically low rates, Canada has seen significant rate increases since 2022. The Bank of Canada raised rates aggressively to combat inflation.
 
-**Prime Rate**: Currently around 7.2% (as of 2024), up from historic lows of 2.45% in 2020-2021.
+**Prime Rate**: Has risen significantly from historic lows, with changes affecting variable rate mortgage holders.
 
 **Fixed vs Variable Spreads**: The gap between fixed and variable rates has narrowed, making the choice more complex than in previous years.
 

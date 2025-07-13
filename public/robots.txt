@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://albertamortgagecalculator.ca/sitemap.xml
+
+# Crawl-delay for bots (optional, helps server performance)
+Crawl-delay: 1
+
+# Block access to admin areas
+Disallow: /admin/
+Disallow: /.netlify/
+Disallow: /api/
+
+# Allow all calculators and blog content
+Allow: /calculators/
+Allow: /blog/

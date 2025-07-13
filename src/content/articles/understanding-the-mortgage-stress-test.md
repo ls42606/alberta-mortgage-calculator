@@ -16,7 +16,7 @@ The mortgage stress test is a federal regulation requiring borrowers to prove th
 
 ## Who Must Pass the Stress Test?
 
-**All Federally Regulated Lenders**: This includes major banks like TD, RBC, BMO, Scotia, and CIBC, as well as most credit unions and mortgage finance companies.
+**All Federally Regulated Lenders**: This includes major banks, credit unions, and mortgage finance companies.
 
 **All Mortgage Types**: 
 - Insured mortgages (less than 20% down)
