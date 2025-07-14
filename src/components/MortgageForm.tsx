@@ -197,7 +197,11 @@ const MortgageForm: React.FC<MortgageFormProps> = ({
       )}
 
       <div className={`transition-all duration-500 ${
-        isFullScreen ? 'p-6 sm:p-8 lg:p-12 max-h-[calc(100vh-200px)] overflow-y-auto' : 'p-6 sm:p-8 lg:p-10'
+        isFullScreen && !showResults 
+          ? 'p-6 sm:p-8 lg:p-12 max-h-[calc(100vh-200px)] overflow-y-auto' 
+          : isFullScreen && showResults 
+          ? 'p-4 sm:p-6 lg:p-8 max-h-[calc(100vh-180px)] overflow-y-auto' 
+          : 'p-6 sm:p-8 lg:p-10'
       }`}>
         {isSubmitting ? (
           <div className="text-center py-12 sm:py-16 space-y-6">
