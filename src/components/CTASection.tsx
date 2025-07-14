@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle, Calculator, Home, DollarSign, Shield, Clock, Award, Calendar, Phone } from 'lucide-react';
+import { ArrowRight, CheckCircle, Calculator, Home, DollarSign, Shield, Clock, Award, Calendar, BookOpen } from 'lucide-react';
 
 const CTASection: React.FC = () => {
   const scrollToCalculatorWithFullScreen = () => {
@@ -101,12 +101,12 @@ const CTASection: React.FC = () => {
           </button>
           
           <a
-            href="tel:1-800-ALBERTA"
+            href="/blog"
             className="group px-10 py-5 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center justify-center space-x-3"
           >
-            <Phone size={24} className="group-hover:animate-bounce-gentle" />
-            <span>Call 1-800-ALBERTA</span>
-            <span className="text-sm opacity-75">(Expert Available)</span>
+            <BookOpen size={24} className="group-hover:animate-bounce-gentle" />
+            <span>Learn More</span>
+            <span className="text-sm opacity-75">(Educational Resources)</span>
           </a>
         </div>
 

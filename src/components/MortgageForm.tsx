@@ -19,7 +19,6 @@ export interface FormData {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
 }
 
 const initialFormData: FormData = {
@@ -32,8 +31,7 @@ const initialFormData: FormData = {
   credit: '',
   firstName: '',
   lastName: '',
-  email: '',
-  phone: ''
+  email: ''
 };
 
 interface MortgageFormProps {

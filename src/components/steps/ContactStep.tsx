@@ -19,7 +19,7 @@ const ContactStep: React.FC<ContactStepProps> = ({
   isSubmitting 
 }) => {
   const isValid = formData.firstName !== '' && formData.lastName !== '' && 
-                 formData.email !== '' && formData.phone !== '';
+                 formData.email !== '';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,23 +102,6 @@ const ContactStep: React.FC<ContactStepProps> = ({
             </p>
           </div>
 
-          <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              className="form-input"
-              placeholder="(403) 555-0100"
-              value={formData.phone}
-              onChange={(e) => onChange({ phone: e.target.value })}
-              required
-            />
-            <p className="text-xs text-gray-500 mt-1">
-              For urgent rate updates and approval notifications
-            </p>
-          </div>
-
           {/* Enhanced Privacy Notice */}
           <div className="p-6 bg-gradient-to-r from-gray-50 to-blue-50/30 rounded-xl border border-gray-200">
             <div className="flex items-start space-x-4">
@@ -127,8 +110,7 @@ const ContactStep: React.FC<ContactStepProps> = ({
                 <h4 className="font-bold text-gray-900">Your Privacy is Protected</h4>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   We use bank-level encryption and never share your information without explicit consent. 
-                  Our professional analysis is performed securely and your data is automatically deleted after 30 days 
-                  unless you choose to proceed with an application.
+                  A mortgage professional will contact you within 24 hours to provide personalized guidance and complete your application.
                 </p>
               </div>
             </div>
