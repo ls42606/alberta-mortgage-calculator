@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
               {/* Trust Indicator - Modern professional design */}
               <div className="inline-flex items-center space-x-3 px-5 sm:px-7 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 rounded-xl text-sm sm:text-base font-semibold shadow-lg shadow-slate-500/10">
                 <CheckCircle size={18} className="text-emerald-600 flex-shrink-0" />
-                <span>Educational Resource for Albertans</span>
+                <span>Alberta's Leading Mortgage Resource</span>
               </div>
               
               {/* Main Headline - Modern typography */}
@@ -96,14 +96,14 @@ const Hero: React.FC = () => {
                 <div className={`transition-all duration-700 ${
                   isFormFullScreen ? 'text-center' : 'text-center lg:text-left'
                 }`}>
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold gradient-text mb-2">6</div>
-                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Calculators</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold gradient-text mb-2">Instant</div>
+                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Results</div>
                 </div>
                 <div className={`transition-all duration-700 ${
                   isFormFullScreen ? 'text-center' : 'text-center lg:text-left'
                 }`}>
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-brand-blue to-brand-gold bg-clip-text text-transparent mb-2">Free</div>
-                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Always</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-brand-blue to-brand-gold bg-clip-text text-transparent mb-2">Secure</div>
+                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">& Private</div>
                 </div>
                 <div className={`transition-all duration-700 ${
                   isFormFullScreen ? 'text-center' : 'text-center lg:text-left'
@@ -111,9 +111,9 @@ const Hero: React.FC = () => {
                   <div className={`flex items-center space-x-1 mb-2 transition-all duration-700 ${
                     isFormFullScreen ? 'justify-center' : 'justify-center lg:justify-start'
                   }`}>
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-brand-gold to-emerald-600 bg-clip-text text-transparent">CA</div>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-brand-gold to-emerald-600 bg-clip-text text-transparent">24/7</div>
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Math Standards</div>
+                  <div className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wide">Available</div>
                 </div>
               </div>
             </div>

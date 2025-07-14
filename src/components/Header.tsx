@@ -133,7 +133,7 @@ const Header: React.FC = () => {
                 Alberta Mortgage Calculator
               </div>
               <div className="text-xs text-gray-600 font-medium">
-                Educational mortgage calculators
+                The mortgage desk Albertans trust
               </div>
             </div>
           </a>

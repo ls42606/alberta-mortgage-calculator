@@ -6,9 +6,8 @@ export const SITE_CONFIG: SiteConfig = {
   description: 'Comprehensive mortgage calculators and financial tools for Alberta homebuyers and real estate professionals.',
   url: 'https://alberta-mortgage-calculator.com',
   contact: {
-    email: 'info@alberta-mortgage-calculator.com',
-    phone: '+1 (403) 555-0123',
-    address: 'Calgary, Alberta, Canada'
+    email: 'info@albertamortgagecalculator.ca',
+    address: 'Alberta, Canada'
   },
   social: {
     facebook: 'https://facebook.com/alberta-mortgage-calc',

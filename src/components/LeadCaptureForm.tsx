@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Mail, Phone, DollarSign, MessageCircle, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { User, Mail, DollarSign, MessageCircle, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface LeadCaptureFormProps {
   source?: string;
@@ -11,7 +11,6 @@ interface LeadCaptureFormProps {
 interface FormData {
   name: string;
   email: string;
-  phone: string;
   mortgageAmount: string;
   message: string;
 }
@@ -25,7 +24,6 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    phone: '',
     mortgageAmount: '',
     message: ''
   });
@@ -41,26 +39,6 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     }));
   };
 
-  const formatPhoneNumber = (value: string) => {
-    // Remove all non-digits
-    const cleaned = value.replace(/\D/g, '');
-    
-    // Format as (XXX) XXX-XXXX
-    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-    if (match) {
-      return `(${match[1]}) ${match[2]}-${match[3]}`;
-    }
-    
-    return cleaned;
-  };
-
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatPhoneNumber(e.target.value);
-    setFormData(prev => ({
-      ...prev,
-      phone: formatted
-    }));
-  };
 
   const validateForm = (): boolean => {
     if (!formData.name.trim()) {
@@ -76,17 +54,6 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setErrorMessage('Please enter a valid email address');
-      return false;
-    }
-    
-    if (!formData.phone.trim()) {
-      setErrorMessage('Phone number is required');
-      return false;
-    }
-    
-    const phoneDigits = formData.phone.replace(/\D/g, '');
-    if (phoneDigits.length !== 10) {
-      setErrorMessage('Please enter a valid 10-digit phone number');
       return false;
     }
     
@@ -134,7 +101,6 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         calculatorType,
         name: formData.name.trim(),
         email: formData.email.trim().toLowerCase(),
-        phone: formData.phone,
         mortgageAmount: formData.mortgageAmount,
         message: formData.message.trim(),
         calculationResults,
@@ -184,11 +150,14 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xl">
-      <div className="text-center mb-6">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Connect with Mortgage Professionals</h3>
-        <p className="text-gray-600">
-          Get personalized calculations and educational guidance
+    <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-2xl shadow-gray-900/5 backdrop-blur-sm">
+      <div className="text-center mb-8">
+        <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <User size={24} className="text-white" />
+        </div>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Get Expert Guidance</h3>
+        <p className="text-gray-600 text-sm">
+          Connect with licensed mortgage professionals for personalized advice
         </p>
       </div>
 
@@ -201,9 +170,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         )}
 
         <div>
-          <label htmlFor="name" className="block text-sm font-bold text-gray-900 mb-2 flex items-center space-x-2">
-            <User size={16} className="text-gray-600" />
-            <span>Full Name *</span>
+          <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-3">
+            Full Name *
           </label>
           <input
             type="text"
@@ -211,16 +179,15 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+            className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-500"
             placeholder="Enter your full name"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-bold text-gray-900 mb-2 flex items-center space-x-2">
-            <Mail size={16} className="text-gray-600" />
-            <span>Email Address *</span>
+          <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-3">
+            Email Address *
           </label>
           <input
             type="email"
@@ -228,33 +195,16 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+            className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-500"
             placeholder="Enter your email address"
             required
           />
         </div>
 
-        <div>
-          <label htmlFor="phone" className="block text-sm font-bold text-gray-900 mb-2 flex items-center space-x-2">
-            <Phone size={16} className="text-gray-600" />
-            <span>Phone Number *</span>
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handlePhoneChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-            placeholder="(555) 123-4567"
-            required
-          />
-        </div>
 
         <div>
-          <label htmlFor="mortgageAmount" className="block text-sm font-bold text-gray-900 mb-2 flex items-center space-x-2">
-            <DollarSign size={16} className="text-gray-600" />
-            <span>Mortgage Amount (Optional)</span>
+          <label htmlFor="mortgageAmount" className="block text-sm font-semibold text-gray-700 mb-3">
+            Mortgage Amount (Optional)
           </label>
           <input
             type="text"
@@ -262,51 +212,50 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             name="mortgageAmount"
             value={formData.mortgageAmount}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+            className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-500"
             placeholder="e.g., $500,000"
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-sm font-bold text-gray-900 mb-2 flex items-center space-x-2">
-            <MessageCircle size={16} className="text-gray-600" />
-            <span>Message (Optional)</span>
+          <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-3">
+            Message (Optional)
           </label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleInputChange}
-            rows={3}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none"
-            placeholder="Tell us about your mortgage needs or any specific questions you have..."
+            rows={4}
+            className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-500 resize-none"
+            placeholder="Tell us about your mortgage needs or any specific questions..."
           />
         </div>
 
-        <div className="pt-4">
+        <div className="pt-6">
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="w-full bg-emerald-600 text-white font-bold py-4 px-6 rounded-lg hover:bg-emerald-700 focus:ring-4 focus:ring-emerald-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            className="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold py-4 px-6 rounded-2xl hover:from-emerald-700 hover:to-emerald-800 focus:ring-4 focus:ring-emerald-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3 shadow-lg shadow-emerald-600/25"
           >
             {status === 'submitting' ? (
               <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>Submitting...</span>
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                <span>Connecting...</span>
               </>
             ) : (
               <>
-                <Send size={20} />
-                <span>Connect with Professionals</span>
+                <Send size={18} />
+                <span>Get Expert Guidance</span>
               </>
             )}
           </button>
         </div>
 
-        <div className="text-center">
-          <p className="text-xs text-gray-500 leading-relaxed">
-            By submitting this form, you consent to be contacted by a licensed mortgage professional. 
-            Your information is secure and will never be shared with third parties.
+        <div className="text-center mt-6">
+          <p className="text-xs text-gray-400 leading-relaxed">
+            By submitting, you agree to be contacted by licensed mortgage professionals. 
+            Your information is secure and protected.
           </p>
         </div>
       </form>

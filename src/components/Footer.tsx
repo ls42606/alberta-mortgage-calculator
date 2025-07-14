@@ -40,17 +40,14 @@ const Footer: React.FC = () => {
   ];
 
   const contactInfo = [
-    { icon: Phone, text: 'Calgary: (403) 555-0100', href: 'tel:4035550100' },
-    { icon: Phone, text: 'Edmonton: (780) 555-0200', href: 'tel:7805550200' },
-    { icon: Phone, text: 'Toll-Free: 1-800-ALBERTA', href: 'tel:18002532782' },
-    { icon: Mail, text: 'info@albertamortgage.ca', href: 'mailto:info@albertamortgage.ca' },
+    { icon: Mail, text: 'info@albertamortgagecalculator.ca', href: 'mailto:info@albertamortgagecalculator.ca' },
   ];
 
   const certifications = [
-    { name: 'Information Only', icon: Shield },
-    { name: 'BBB A+ Rating', icon: Star },
-    { name: 'AMP Member', icon: Award },
-    { name: 'Bonded & Insured', icon: CheckCircle },
+    { name: '100% Free', icon: Shield },
+    { name: 'Secure & Private', icon: CheckCircle },
+    { name: 'Information Only', icon: Award },
+    { name: 'Updated July 2024', icon: Star },
   ];
 
   const scrollToSection = (href: string) => {
@@ -126,7 +123,7 @@ const Footer: React.FC = () => {
                 <h3 className="text-xl font-bold bg-gradient-to-r from-emerald-400 via-brand-blue to-brand-gold bg-clip-text text-transparent">
                   Alberta Mortgage Calculator
                 </h3>
-                <p className="text-xs text-gray-400 font-medium">The mortgage desk Alberta trusts</p>
+                <p className="text-xs text-gray-400 font-medium">The mortgage desk Albertans trust</p>
               </div>
             </div>
             

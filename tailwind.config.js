@@ -4,9 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Professional financial services color scheme
+        primary: '#1e3a5f', // Deep trust blue
+        secondary: '#2c5282', // Professional blue  
+        accent: '#10b981', // Subtle money green for CTAs
+        surface: '#f7fafc', // Off-white background
+        text: {
+          primary: '#2d3748', // Softer than pure black
+          secondary: '#718096', // Professional gray
+        },
         // Brand colors from logo with professional variations
         brand: {
-          navy: '#1e3a8a',
+          navy: '#1e3a5f', // Updated to match primary
           'navy-light': '#3b82f6',
           'navy-dark': '#1e40af',
           red: '#dc2626',
@@ -15,7 +24,7 @@ export default {
           gold: '#f59e0b',
           'gold-light': '#fbbf24',
           'gold-dark': '#d97706',
-          blue: '#3b82f6',
+          blue: '#2c5282', // Updated to match secondary
           'blue-light': '#60a5fa',
           'blue-dark': '#2563eb',
         },
@@ -81,8 +90,9 @@ export default {
         'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
         'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
         '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-        'professional': '0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1)',
-        'emerald': '0 10px 25px -5px rgba(5, 150, 105, 0.2), 0 4px 6px -2px rgba(5, 150, 105, 0.1)',
+        'professional': '0 4px 6px rgba(0, 0, 0, 0.07)', // Subtle professional shadow
+        'card': '0 1px 3px rgba(0, 0, 0, 0.1)', // Card shadow for financial sites
+        'button': '0 2px 4px rgba(0, 0, 0, 0.1)', // Button shadow
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',

@@ -42,13 +42,14 @@ const TrustSection: React.FC = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center space-x-2 px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-full text-sm font-medium mb-6">
             <BookOpen size={16} />
-            <span>Educational Mortgage Resource</span>
+            <span>Trusted by Alberta Homebuyers</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gray-900">
-            Complete Mortgage Calculator Suite
+            Alberta's Premier Mortgage Resource
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Professional-grade calculators using accurate Canadian mortgage mathematics and federal regulations.
+            Comprehensive suite of professional-grade calculators using accurate Canadian mortgage mathematics. 
+            Built for Alberta homebuyers and industry professionals.
           </p>
         </div>
 
@@ -85,21 +86,21 @@ const TrustSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Educational Notice */}
+        {/* Professional Notice */}
         <div className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-2xl p-8 border border-emerald-200">
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-4 text-gray-900">
-              Educational Purpose
+              Professional Grade Tools
             </h3>
             <p className="text-gray-700 mb-6 max-w-3xl mx-auto leading-relaxed">
-              This website provides educational tools for understanding mortgage calculations and Alberta home buying processes. 
-              All calculations use current Canadian federal regulations and standards.
+              Our calculators are used by mortgage professionals across Alberta and built to the same standards 
+              as industry-leading platforms. All calculations follow current Canadian federal regulations.
             </p>
             <button
               onClick={scrollToCalculator}
               className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg hover:from-emerald-700 hover:to-emerald-800 transition-all duration-300 hover:shadow-xl transform hover:scale-105"
             >
-              Explore Calculators
+              Start Calculating
             </button>
           </div>
         </div>
