@@ -60,7 +60,7 @@ const MortgageMythsDebunked: React.FC = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-red-900 mb-2">MYTH: Government provides 10% equity loans for all first-time buyers</h3>
                   <p className="text-red-800 mb-3">
-                    This widespread misconception refers to the federal First-Time Home Buyer Incentive (discontinued March 2024) program.
+                    This widespread misconception refers to the federal First-Time Home Buyer Incentive program.
                   </p>
                 </div>
               </div>
@@ -72,7 +72,7 @@ const MortgageMythsDebunked: React.FC = () => {
                   <div>
                     <h4 className="font-semibold text-green-900 mb-2">FACT: Program discontinued for new applications</h4>
                     <p className="text-green-800 text-sm">
-                      The First-Time Home Buyer Incentive (discontinued March 2024) closed to new applications in March 2024. 
+                      The First-Time Home Buyer Incentive closed to new applications in March 2024. 
                       Only existing participants can still benefit from this shared equity program.
                     </p>
                   </div>
@@ -309,7 +309,7 @@ const MortgageMythsDebunked: React.FC = () => {
                 <li className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-600 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <strong className="text-gray-900">subject to approvals:</strong>
+                    <strong className="text-gray-900">Guaranteed approvals:</strong>
                     <p className="text-gray-700 text-sm">No legitimate lender guarantees approval</p>
                   </div>
                 </li>
@@ -356,10 +356,6 @@ const MortgageMythsDebunked: React.FC = () => {
             </div>
           </div>
         </section>
-
----
-
-*Rates and information subject to qualification and market conditions. This content is for educational purposes only. Consult with qualified mortgage professionals for personalized advice.*
 
       </ContentLayout>
     </>

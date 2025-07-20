@@ -105,7 +105,7 @@ const AffordabilityCalculatorGuide: React.FC = () => {
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Gross Debt Service (GDS) Ratio</h3>
               <p className="text-gray-700 mb-3">
-                maximum varies: CMHC 39%, conventional 45% (GDS) of gross monthly income for housing costs including:
+                Maximum 32% of gross monthly income for housing costs including:
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li>• Principal and interest payments</li>
@@ -118,7 +118,7 @@ const AffordabilityCalculatorGuide: React.FC = () => {
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Total Debt Service (TDS) Ratio</h3>
               <p className="text-gray-700 mb-3">
-                maximum varies: CMHC 44%, conventional 50% (TDS) of gross monthly income for total debt payments including:
+                Maximum 40% of gross monthly income for total debt payments including:
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li>• All housing costs (GDS)</li>

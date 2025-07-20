@@ -142,7 +142,7 @@ const EdmontonMortgageGuide: React.FC = () => {
                 <li className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <strong className="text-gray-900">First-Time Home Buyer Incentive:</strong>
+                    <strong className="text-gray-900">First-Time Home Buyer Incentive (discontinued March 2024):</strong>
                     <p className="text-gray-700 text-sm">Program discontinued for new applications as of March 2024</p>
                   </div>
                 </li>
@@ -216,6 +216,10 @@ const EdmontonMortgageGuide: React.FC = () => {
             </div>
           </div>
         </section>
+
+---
+
+*Rates and information subject to qualification and market conditions. This content is for educational purposes only. Consult with qualified mortgage professionals for personalized advice.*
 
       </ContentLayout>
     </>

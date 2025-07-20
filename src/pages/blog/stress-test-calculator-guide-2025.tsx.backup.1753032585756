@@ -75,49 +75,22 @@ const StressTestCalculatorGuide: React.FC = () => {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Canadian Debt Service Standards</h2>
           
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-semibold text-blue-900 mb-3">Professional Note: Mortgage Type Matters</h3>
-            <p className="text-blue-800 text-sm">
-              Debt service ratio maximums vary by mortgage type. CMHC insured mortgages have different limits than conventional mortgages.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">CMHC Insured Mortgages</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-700">GDS Maximum:</span>
-                  <span className="text-2xl font-bold text-blue-600">39%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-700">TDS Maximum:</span>
-                  <span className="text-2xl font-bold text-green-600">44%</span>
-                </div>
-              </div>
-              <p className="text-sm text-gray-600 mt-3">For mortgages with less than 20% down payment</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center p-6 bg-gray-50 rounded-lg">
+              <div className="text-3xl font-bold text-blue-600 mb-2">32%</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">GDS Maximum</div>
+              <div className="text-sm text-gray-600">Gross Debt Service Ratio for housing costs</div>
             </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Conventional Mortgages</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-700">GDS Maximum:</span>
-                  <span className="text-2xl font-bold text-blue-600">45%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-700">TDS Maximum:</span>
-                  <span className="text-2xl font-bold text-green-600">50%</span>
-                </div>
-              </div>
-              <p className="text-sm text-gray-600 mt-3">For mortgages with 20%+ down payment</p>
+            <div className="text-center p-6 bg-gray-50 rounded-lg">
+              <div className="text-3xl font-bold text-green-600 mb-2">40%</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">TDS Maximum</div>
+              <div className="text-sm text-gray-600">Total Debt Service Ratio for all debt</div>
             </div>
-          </div>
-          
-          <div className="text-center p-6 bg-purple-50 border border-purple-200 rounded-lg">
-            <div className="text-3xl font-bold text-purple-600 mb-2">7%+</div>
-            <div className="text-lg font-semibold text-gray-900 mb-2">Federal Stress Test Rate</div>
-            <div className="text-sm text-gray-600">All mortgages must qualify at this higher rate</div>
+            <div className="text-center p-6 bg-gray-50 rounded-lg">
+              <div className="text-3xl font-bold text-purple-600 mb-2">7%+</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">Stress Test Rate</div>
+              <div className="text-sm text-gray-600">Federal qualifying rate requirement</div>
+            </div>
           </div>
         </section>
 
@@ -281,10 +254,6 @@ const StressTestCalculatorGuide: React.FC = () => {
             </div>
           </div>
         </section>
-
----
-
-*Rates and information subject to qualification and market conditions. This content is for educational purposes only. Consult with qualified mortgage professionals for personalized advice.*
 
       </ContentLayout>
     </>

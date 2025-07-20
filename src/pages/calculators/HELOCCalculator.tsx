@@ -21,10 +21,6 @@ const HELOCCalculator: React.FC = () => {
     remainingEquity: 0
   });
 
-  useEffect(() => {
-    calculateHELOC();
-  }, [calculateHELOC]);
-
   const calculateHELOC = useCallback(() => {
     // A HELOC is constrained by two rules.
     // 1. The total of the mortgage + HELOC cannot exceed 80% of home value.
@@ -80,6 +76,10 @@ const HELOCCalculator: React.FC = () => {
       remainingEquity: Math.round(remainingEquity)
     });
   }, [homeValue, mortgageBalance, helocRate, drawAmount, paymentType, repaymentPeriod]);
+
+  useEffect(() => {
+    calculateHELOC();
+  }, [calculateHELOC]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-CA', {
@@ -156,7 +156,7 @@ const HELOCCalculator: React.FC = () => {
                 label="Amount to Draw"
                 value={drawAmount}
                 min={10000}
-                max={Math.max(10000, results.maxHelocLimit)}
+                max={Math.max(200000, Math.min((homeValue * 0.80) - mortgageBalance, homeValue * 0.65))}
                 step={5000}
                 onChange={setDrawAmount}
                 formatValue={(value) => formatCurrency(value)}

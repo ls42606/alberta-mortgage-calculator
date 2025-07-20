@@ -27,6 +27,16 @@ const CalculatorShowcase: React.FC = () => {
       href: '/calculators/affordability'
     },
     {
+      id: 'heloc',
+      title: 'HELOC Calculator',
+      description: 'Calculate available credit and payments for home equity lines',
+      icon: Percent,
+      color: 'from-indigo-500 to-indigo-600',
+      features: ['Available equity', 'Interest-only payments', 'Credit limits'],
+      popular: true,
+      href: '/calculators/heloc'
+    },
+    {
       id: 'refinance',
       title: 'Refinance Calculator',
       description: 'Compare your current mortgage with refinancing options',
@@ -65,16 +75,6 @@ const CalculatorShowcase: React.FC = () => {
       features: ['Investment analysis', 'Cash flow', 'ROI calculations'],
       popular: false,
       href: '/calculators/commercial'
-    },
-    {
-      id: 'heloc',
-      title: 'HELOC Calculator',
-      description: 'Calculate available credit and payments for home equity lines',
-      icon: Percent,
-      color: 'from-indigo-500 to-indigo-600',
-      features: ['Available equity', 'Interest-only payments', 'Credit limits'],
-      popular: false,
-      href: '/calculators/heloc'
     },
     {
       id: 'stress-test',

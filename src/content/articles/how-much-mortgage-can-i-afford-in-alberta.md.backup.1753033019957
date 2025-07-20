@@ -6,13 +6,13 @@ Determining your mortgage affordability in Alberta requires understanding Canadi
 
 Alberta lenders use two key ratios to determine mortgage affordability:
 
-**GDS maximum: 39% (CMHC insured) or 45% (conventional) of your gross monthly income. Housing costs include:
+**Gross Debt Service (GDS) Ratio**: Your housing costs should not exceed 32% of your gross monthly income. Housing costs include:
 - Principal and interest payments
 - Property taxes
 - Heating costs
 - 50% of condo fees (if applicable)
 
-**TDS maximum: 44% (CMHC insured) or 50% (conventional) of your gross monthly income. This includes housing costs plus all other debt payments.
+**Total Debt Service (TDS) Ratio**: Your total monthly debt payments should not exceed 40% of your gross monthly income. This includes housing costs plus all other debt payments.
 
 ## The Federal Stress Test
 
@@ -34,7 +34,7 @@ This stress test applies to all mortgage applications in Alberta, regardless of 
 
 For a household with $80,000 annual income ($6,667 monthly):
 
-**GDS maximum: 39% (CMHC insured) or 45% (conventional) limit)**:
+**GDS Calculation (32% limit)**:
 - Maximum housing costs: $2,133 monthly
 - Less property taxes ($250): $1,883
 - Less heating ($200): $1,683

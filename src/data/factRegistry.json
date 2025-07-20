@@ -1,0 +1,215 @@
+{
+  "cmhc_rates": {
+    "insurance_premium_range": {
+      "value": "0.6% to 4.5%",
+      "breakdown": {
+        "5_to_9_99_percent_down": 4.00,
+        "10_to_14_99_percent_down": 3.10,
+        "15_to_19_99_percent_down": 2.80,
+        "20_percent_plus": 0
+      },
+      "source": "https://www.cmhc-schl.gc.ca/en/consumers/home-buying/mortgage-loan-insurance-for-consumers/cmhc-mortgage-loan-insurance-cost",
+      "last_verified": "2025-01-20",
+      "expires": "2025-03-20",
+      "confidence": 1.0
+    }
+  },
+  "stress_test": {
+    "qualifying_rate": {
+      "value": "Bank of Canada qualifying rate",
+      "description": "Higher of contract rate + 2% or BoC 5-year benchmark",
+      "source": "OSFI B-20 Guidelines",
+      "last_verified": "2025-01-20",
+      "permanent": true,
+      "confidence": 1.0
+    }
+  },
+  "debt_service_ratios": {
+    "cmhc_insured": {
+      "gds_maximum": {
+        "value": 39,
+        "unit": "percent",
+        "description": "CMHC maximum Gross Debt Service ratio for insured mortgages",
+        "source": "CMHC underwriting guidelines (updated July 2021)",
+        "last_verified": "2025-01-20",
+        "confidence": 1.0,
+        "note": "Increased from 35% to 39% in July 2021"
+      },
+      "tds_maximum": {
+        "value": 44,
+        "unit": "percent",
+        "description": "CMHC maximum Total Debt Service ratio for insured mortgages",
+        "source": "CMHC underwriting guidelines (updated July 2021)",
+        "last_verified": "2025-01-20",
+        "confidence": 1.0,
+        "note": "Increased from 42% to 44% in July 2021"
+      }
+    },
+    "conventional_uninsured": {
+      "gds_maximum": {
+        "value": 45,
+        "unit": "percent",
+        "description": "Conventional mortgage maximum Gross Debt Service ratio (20%+ down)",
+        "source": "Bank lending standards for uninsured mortgages",
+        "last_verified": "2025-01-20",
+        "confidence": 1.0,
+        "note": "Higher flexibility for conventional mortgages with 20%+ down payment"
+      },
+      "tds_maximum": {
+        "value": 50,
+        "unit": "percent",
+        "description": "Conventional mortgage maximum Total Debt Service ratio (20%+ down)",
+        "source": "Bank lending standards for uninsured mortgages",
+        "last_verified": "2025-01-20",
+        "confidence": 1.0,
+        "note": "Higher flexibility for conventional mortgages with 20%+ down payment"
+      }
+    },
+    "conservative_bank_guidelines": {
+      "gds_range": {
+        "value": "30% - 32%",
+        "description": "Conservative bank internal guidelines for GDS",
+        "source": "RBC and other major bank guidelines",
+        "last_verified": "2025-01-20",
+        "confidence": 0.9,
+        "note": "Some banks use more conservative internal ratios"
+      },
+      "tds_range": {
+        "value": "37% - 40%",
+        "description": "Conservative bank internal guidelines for TDS",
+        "source": "RBC and other major bank guidelines",
+        "last_verified": "2025-01-20",
+        "confidence": 0.9,
+        "note": "Some banks use more conservative internal ratios"
+      }
+    }
+  },
+  "alberta_programs": {
+    "provincial_mortgage_programs": {
+      "value": [],
+      "note": "NO provincial FTHB or mortgage assistance programs exist in Alberta",
+      "source": "Alberta Housing Corporation",
+      "last_verified": "2025-01-20",
+      "confidence": 1.0,
+      "permanent": true
+    },
+    "land_transfer_tax": {
+      "value": 0,
+      "description": "Alberta has no land transfer tax",
+      "source": "Alberta Land Titles Act",
+      "permanent": true,
+      "confidence": 1.0
+    },
+    "municipal_programs": {
+      "calgary": {
+        "down_payment_assistance": {
+          "value": "Limited municipal programs with strict eligibility",
+          "source": "City of Calgary Housing",
+          "last_verified": "2025-01-20",
+          "note": "Small-scale, limited funding programs"
+        }
+      },
+      "edmonton": {
+        "housing_trust": {
+          "value": "Down payment loans up to $40,000",
+          "source": "Edmonton Housing Trust Fund",
+          "last_verified": "2025-01-20",
+          "note": "Subject to availability and strict income requirements"
+        }
+      }
+    }
+  },
+  "federal_programs": {
+    "first_time_home_buyer_incentive": {
+      "status": "DISCONTINUED",
+      "value": "Program closed to new applications March 2024",
+      "source": "CMHC official announcement",
+      "last_verified": "2025-01-20",
+      "confidence": 1.0,
+      "replacement": "Home Buyers' Amount tax credit only"
+    },
+    "home_buyers_amount": {
+      "value": 1500,
+      "unit": "CAD_tax_credit",
+      "description": "Federal tax credit for first-time buyers",
+      "source": "Canada Revenue Agency",
+      "last_verified": "2025-01-20",
+      "permanent": true
+    },
+    "rrsp_home_buyers_plan": {
+      "withdrawal_limit_per_person": {
+        "value": 35000,
+        "unit": "CAD",
+        "source": "Canada Revenue Agency",
+        "last_verified": "2025-01-20",
+        "repayment_period": "15 years"
+      }
+    }
+  },
+  "lending_standards": {
+    "minimum_down_payment": {
+      "under_500k": {
+        "value": 5,
+        "unit": "percent",
+        "source": "Federal regulations",
+        "permanent": true
+      },
+      "500k_to_999k": {
+        "value": "5% on first $500K + 10% on remainder",
+        "source": "Federal regulations", 
+        "permanent": true
+      },
+      "over_1m": {
+        "value": 20,
+        "unit": "percent",
+        "source": "Federal regulations",
+        "permanent": true
+      }
+    },
+    "credit_score_minimums": {
+      "insured_mortgages": {
+        "value": 650,
+        "source": "CMHC requirements",
+        "note": "Some lenders may require higher"
+      },
+      "uninsured_mortgages": {
+        "value": 680,
+        "source": "Typical lender requirements",
+        "note": "Varies by lender"
+      }
+    }
+  },
+  "content_policy": {
+    "prohibited_claims": [
+      "Specific interest rate predictions",
+      "Guaranteed approval claims", 
+      "Exact property value predictions without date stamps",
+      "References to discontinued programs as active",
+      "Alberta provincial mortgage programs",
+      "Specific stress test rates without Bank of Canada reference"
+    ],
+    "required_disclaimers": [
+      "Rates subject to qualification and market conditions",
+      "This information is for educational purposes",
+      "Consult with qualified professionals",
+      "Programs and rates subject to change"
+    ],
+    "safe_language": {
+      "instead_of_specific_rates": "Current rates vary - contact for quote",
+      "instead_of_guaranteed": "Subject to qualification and approval",
+      "instead_of_exact_prices": "Prices vary by location and market conditions",
+      "instead_of_fthb_program": "First-Time Home Buyer Incentive (discontinued March 2024)"
+    }
+  },
+  "validation_metadata": {
+    "last_full_audit": "2025-01-20",
+    "next_review_due": "2025-02-20", 
+    "critical_items_count": 8,
+    "auto_update_sources": [
+      "Bank of Canada",
+      "CMHC",
+      "OSFI",
+      "CRA"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-07-20T17:53:13.616Z",
+  "summary": {
+    "totalFiles": 13,
+    "filesWithErrors": 0,
+    "totalErrors": 0,
+    "totalWarnings": 14,
+    "passRate": "100.0"
+  },
+  "criticalIssues": []
+}
