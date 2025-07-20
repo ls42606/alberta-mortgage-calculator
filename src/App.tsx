@@ -30,6 +30,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 // Lazy-loaded Admin Pages
 const ContentDashboard = lazy(() => import('./components/admin/ContentDashboard').then(module => ({ default: module.ContentDashboard })));
 const LeadsAdmin = lazy(() => import('./pages/admin/LeadsAdmin'));
+const LeadsAdminV2 = lazy(() => import('./pages/admin/LeadsAdminV2'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Auth Components (keep these synchronous for faster auth flow)
@@ -198,7 +199,7 @@ const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute isAuthenticated={authState.isAuthenticated}>
             <Suspense fallback={<LoadingSpinner size="lg" message="Loading Leads Dashboard..." />}>
-              <LeadsAdmin />
+              <LeadsAdminV2 />
             </Suspense>
           </ProtectedRoute>
         } 

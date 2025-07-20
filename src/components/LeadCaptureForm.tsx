@@ -62,6 +62,44 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   };
 
   const saveLead = async (leadData: LeadFormSubmission): Promise<void> => {
+    // Use Basin.io if configured, otherwise fall back to Netlify function
+    const basinFormId = import.meta.env.VITE_BASIN_FORM_ID;
+    
+    if (basinFormId) {
+      // Basin.io integration for secure email delivery
+      const formData = new FormData();
+      
+      // Add all lead data to form
+      formData.append('name', leadData.name);
+      formData.append('email', leadData.email);
+      formData.append('mortgage_amount', leadData.mortgageAmount || '');
+      formData.append('message', leadData.message || '');
+      formData.append('source', leadData.source);
+      formData.append('calculator_type', leadData.calculatorType);
+      formData.append('timestamp', leadData.timestamp);
+      formData.append('page_url', window.location.href);
+      
+      // Add calculation results if available
+      if (leadData.calculationResults && Object.keys(leadData.calculationResults).length > 0) {
+        formData.append('calculation_results', JSON.stringify(leadData.calculationResults));
+      }
+      
+      const response = await fetch(`https://usebasin.com/f/${basinFormId}`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit to Basin');
+      }
+      
+      return;
+    }
+    
+    // Fallback to Netlify function if Basin not configured
     try {
       const response = await fetch('/.netlify/functions/leads', {
         method: 'POST',
@@ -75,12 +113,9 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         throw new Error('Failed to save lead');
       }
     } catch (error) {
-      // Fallback: save to localStorage if Netlify function fails
-      console.warn('Netlify function save failed, using localStorage fallback', error);
-      
-      const existingLeads = JSON.parse(localStorage.getItem('mortgage-leads') || '[]');
-      existingLeads.push(leadData);
-      localStorage.setItem('mortgage-leads', JSON.stringify(existingLeads));
+      // Remove localStorage fallback for security - leads should only go through proper channels
+      console.error('Lead submission failed', error);
+      throw error;
     }
   };
 
