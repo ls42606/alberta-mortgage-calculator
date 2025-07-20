@@ -2,6 +2,7 @@ import { ContentManagementService } from './contentManagementService';
 import { AnalyticsService } from './analyticsService';
 import { DesignService } from './designService';
 import { BlogService } from './blogService';
+import { AutomationTriggerConfig, AutomationActionConfig, AutomationLogDetails } from '../types/services';
 
 export interface AutomationRule {
   id: string;
@@ -18,18 +19,18 @@ export interface AutomationRule {
 
 export interface AutomationTrigger {
   type: 'schedule' | 'metric_threshold' | 'user_action' | 'external_event';
-  config: Record<string, any>;
+  config: AutomationTriggerConfig;
 }
 
 export interface AutomationAction {
   type: 'generate_content' | 'optimize_design' | 'send_notification' | 'update_settings' | 'run_test';
-  config: Record<string, any>;
+  config: AutomationActionConfig;
 }
 
 export interface AutomationCondition {
   type: 'metric_comparison' | 'time_range' | 'user_segment' | 'content_performance';
   operator: 'equals' | 'greater_than' | 'less_than' | 'contains' | 'not_contains';
-  value: any;
+  value: string | number | boolean;
   field: string;
 }
 
@@ -39,7 +40,7 @@ export interface AutomationLog {
   timestamp: Date;
   status: 'success' | 'failure' | 'skipped';
   message: string;
-  details: Record<string, any>;
+  details: AutomationLogDetails;
 }
 
 export class AutomationService {
@@ -203,12 +204,10 @@ export class AutomationService {
 
   async startAutomation(): Promise<void> {
     if (this.isRunning) {
-      console.log('Automation is already running');
       return;
     }
 
     this.isRunning = true;
-    console.log('Starting automation service...');
 
     // Run every 5 minutes
     setInterval(async () => {
@@ -221,11 +220,9 @@ export class AutomationService {
 
   async stopAutomation(): Promise<void> {
     this.isRunning = false;
-    console.log('Automation service stopped');
   }
 
   private async executeAutomationCycle(): Promise<void> {
-    console.log('Executing automation cycle...');
     
     for (const rule of this.rules.filter(r => r.isActive)) {
       try {
@@ -272,7 +269,7 @@ export class AutomationService {
     }
   }
 
-  private evaluateScheduleTrigger(config: Record<string, any>): boolean {
+  private evaluateScheduleTrigger(config: AutomationTriggerConfig): boolean {
     // Simple time-based evaluation (in a real implementation, use a proper cron parser)
     const now = new Date();
     const currentHour = now.getHours();
@@ -291,7 +288,7 @@ export class AutomationService {
     return false;
   }
 
-  private async evaluateMetricThreshold(config: Record<string, any>): Promise<boolean> {
+  private async evaluateMetricThreshold(config: AutomationTriggerConfig): Promise<boolean> {
     const metrics = this.analyticsService.getCurrentMetrics();
     const metricValue = metrics[config.metric as keyof typeof metrics];
     
@@ -309,7 +306,7 @@ export class AutomationService {
     }
   }
 
-  private async evaluateUserAction(config: Record<string, any>): Promise<boolean> {
+  private async evaluateUserAction(config: AutomationTriggerConfig): Promise<boolean> {
     // Check for specific user actions
     const conversions = this.analyticsService.getConversions();
     const recentConversions = conversions.filter(c => 
@@ -319,7 +316,7 @@ export class AutomationService {
     return recentConversions.some(c => c.type === config.action);
   }
 
-  private async evaluateExternalEvent(config: Record<string, any>): Promise<boolean> {
+  private async evaluateExternalEvent(config: AutomationTriggerConfig): Promise<boolean> {
     // Check for external events (API calls, webhooks, etc.)
     // This would integrate with external services
     return false;
@@ -383,8 +380,6 @@ export class AutomationService {
   }
 
   private async executeRule(rule: AutomationRule): Promise<void> {
-    console.log(`Executing rule: ${rule.name}`);
-    
     for (const action of rule.actions) {
       await this.executeAction(action);
     }
@@ -417,7 +412,7 @@ export class AutomationService {
     }
   }
 
-  private async executeGenerateContent(config: Record<string, any>): Promise<void> {
+  private async executeGenerateContent(config: AutomationActionConfig): Promise<void> {
     if (config.action === 'optimize_existing') {
       await this.contentService.optimizeExistingContent();
     } else {
@@ -438,7 +433,7 @@ export class AutomationService {
     }
   }
 
-  private async executeOptimizeDesign(config: Record<string, any>): Promise<void> {
+  private async executeOptimizeDesign(config: AutomationActionConfig): Promise<void> {
     const activeDesign = this.designService.getActiveDesign();
     if (!activeDesign) return;
     
@@ -446,21 +441,17 @@ export class AutomationService {
       activeDesign,
       config.target || 'conversion'
     );
-    
-    console.log(`Created optimized design: ${optimizedDesign.name}`);
   }
 
-  private async executeSendNotification(config: Record<string, any>): Promise<void> {
-    console.log(`Notification: ${config.subject} - ${config.message}`);
+  private async executeSendNotification(config: AutomationActionConfig): Promise<void> {
     // In a real implementation, this would send email, SMS, or push notifications
   }
 
-  private async executeUpdateSettings(config: Record<string, any>): Promise<void> {
+  private async executeUpdateSettings(config: AutomationActionConfig): Promise<void> {
     // Update application settings
-    console.log('Updating settings:', config);
   }
 
-  private async executeRunTest(config: Record<string, any>): Promise<void> {
+  private async executeRunTest(config: AutomationActionConfig): Promise<void> {
     if (config.type === 'ab_test') {
       const component = this.designService.getComponents().find(c => c.id === config.component);
       if (component && component.variants.length >= 2) {
@@ -469,7 +460,6 @@ export class AutomationService {
           component.variants[0].id,
           component.variants[1].id
         );
-        console.log(`Started A/B test: ${test.id}`);
       }
     }
   }
@@ -509,7 +499,7 @@ export class AutomationService {
     ruleId: string,
     status: 'success' | 'failure' | 'skipped',
     message: string,
-    details: Record<string, any>
+    details: AutomationLogDetails
   ): void {
     const log: AutomationLog = {
       id: Date.now().toString(),

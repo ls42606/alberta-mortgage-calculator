@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, TrendingUp, Users, Star, Shield, Calculator } from 'lucide-react';
+import { CheckCircle, TrendingUp, Users, Shield } from 'lucide-react';
 import MortgageForm from './MortgageForm';
 
 const Hero: React.FC = () => {
@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      <section id="calculator" className="section-padding pt-24 sm:pt-32 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 relative overflow-hidden">
+      <section id="calculator" className="section-padding pt-20 sm:pt-32 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 relative overflow-hidden">
         {/* Modern geometric background */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-1/4 right-1/4 w-[32rem] h-[32rem] bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20rem] h-[20rem] bg-gradient-to-r from-violet-500/5 to-purple-500/5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative max-w-7xl mx-auto px-3 sm:px-6">
           <div className={`grid transition-all duration-700 ease-in-out ${
             isFormFullScreen 
               ? 'grid-cols-1 text-center' 
@@ -43,21 +43,21 @@ const Hero: React.FC = () => {
                 : 'max-w-2xl space-y-professional'
             }`}>
               {/* Trust Indicator - Modern professional design */}
-              <div className="inline-flex items-center space-x-3 px-5 sm:px-7 py-3 sm:py-4 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 rounded-xl text-sm sm:text-base font-semibold shadow-lg shadow-slate-500/10">
-                <CheckCircle size={18} className="text-emerald-600 flex-shrink-0" />
+              <div className="inline-flex items-center space-x-2 sm:space-x-3 px-3 sm:px-7 py-2 sm:py-4 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-700 rounded-xl text-xs sm:text-base font-semibold shadow-lg shadow-slate-500/10">
+                <CheckCircle size={16} className="text-emerald-600 flex-shrink-0" />
                 <span>Alberta's Leading Mortgage Resource</span>
               </div>
               
               {/* Main Headline - Modern typography */}
-              <h1 className={`text-slate-900 leading-[1.1] transition-all duration-700 ${
+              <h1 className={`text-primary leading-[1.1] transition-all duration-700 ${
                 isFormFullScreen 
-                  ? 'text-4xl sm:text-5xl lg:text-7xl font-bold' 
-                  : 'text-4xl sm:text-5xl lg:text-6xl font-bold'
+                  ? 'text-3xl sm:text-5xl lg:text-7xl font-bold' 
+                  : 'text-3xl sm:text-5xl lg:text-6xl font-bold'
               }`}>
-                Alberta's Most Accurate
+                The Mortgage Desk
                 <br />
-                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                  Mortgage Calculator
+                <span className="bg-gradient-to-r from-accent via-secondary to-primary bg-clip-text text-transparent">
+                  Albertans Trust
                 </span>
               </h1>
               
@@ -67,8 +67,8 @@ const Hero: React.FC = () => {
                   ? 'text-xl sm:text-2xl max-w-4xl mx-auto font-medium' 
                   : 'text-lg sm:text-xl max-w-xl font-medium'
               }`}>
-                Calculate accurate mortgage payments using Canadian semi-annual compounding mathematics. 
-                <span className="text-slate-700 font-semibold">Connect with mortgage professionals</span> for personalized calculations and guidance.
+                Professional mortgage calculations trusted by Alberta homebuyers and industry experts. 
+                <span className="text-slate-700 font-semibold">Get expert guidance</span> with accurate Canadian mortgage math.
               </p>
 
               {/* Feature Pills - Modern design */}

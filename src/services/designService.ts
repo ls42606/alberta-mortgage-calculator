@@ -1,4 +1,5 @@
 import { DesignSystem } from './contentManagementService';
+import { ComponentProps, VariantTestConfig } from '../types/services';
 
 export interface DesignVariation {
   id: string;
@@ -28,7 +29,7 @@ export interface ComponentVariant {
   name: string;
   code: string;
   styles: string;
-  props: Record<string, any>;
+  props: ComponentProps;
   performance: {
     clickThroughRate: number;
     conversionRate: number;
@@ -235,7 +236,7 @@ export class DesignService {
     variantName: string,
     code: string,
     styles: string,
-    props: Record<string, any>
+    props: ComponentProps
   ): Promise<ComponentVariant> {
     const component = this.components.find(c => c.id === componentId);
     if (!component) {

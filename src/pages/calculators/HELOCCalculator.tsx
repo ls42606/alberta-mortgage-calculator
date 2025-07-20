@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Percent, DollarSign, TrendingUp, Calculator, Home, Award, Shield } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Percent, DollarSign, TrendingUp, Calculator, Home } from 'lucide-react';
 import CalculatorLayout from '../../components/CalculatorLayout';
 import SliderInput from '../../components/ui/SliderInput';
 
@@ -23,9 +23,9 @@ const HELOCCalculator: React.FC = () => {
 
   useEffect(() => {
     calculateHELOC();
-  }, [homeValue, mortgageBalance, helocRate, drawAmount, paymentType, repaymentPeriod]);
+  }, [calculateHELOC]);
 
-  const calculateHELOC = () => {
+  const calculateHELOC = useCallback(() => {
     // A HELOC is constrained by two rules.
     // 1. The total of the mortgage + HELOC cannot exceed 80% of home value.
     const maxFrom80Rule = (homeValue * 0.80) - mortgageBalance;
@@ -79,7 +79,7 @@ const HELOCCalculator: React.FC = () => {
       totalInterestCost: Math.round(totalInterestCost),
       remainingEquity: Math.round(remainingEquity)
     });
-  };
+  }, [homeValue, mortgageBalance, helocRate, drawAmount, paymentType, repaymentPeriod]);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-CA', {

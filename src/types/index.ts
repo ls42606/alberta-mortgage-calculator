@@ -70,6 +70,20 @@ export interface SiteConfig {
   };
 }
 
+// Auth Types
+export interface AuthState {
+  isAuthenticated: boolean;
+  user?: {
+    username: string;
+    role: 'admin';
+  };
+}
+
+export interface LoginCredentials {
+  username: string;
+  password: string;
+}
+
 // Form Types
 export interface FormField {
   name: string;
@@ -84,4 +98,9 @@ export interface FormField {
     pattern?: string;
     message?: string;
   };
-} 
+}
+
+// Re-export types from other modules
+export * from './admin';
+export * from './services';
+export * from './blog'; 

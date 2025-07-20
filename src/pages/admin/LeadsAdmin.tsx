@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../components/auth';
 
 interface Lead {
   id: string;
@@ -16,18 +17,11 @@ const LeadsAdmin: React.FC = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [password, setPassword] = useState('');
-  const [authenticated, setAuthenticated] = useState(false);
+  const { authState, logout } = useAuth();
 
-  // Simple password protection
-  const handleLogin = () => {
-    if (password === 'albertamortgagecalculator2024') {
-      setAuthenticated(true);
-      fetchLeads();
-    } else {
-      setError('Invalid password');
-    }
-  };
+  useEffect(() => {
+    fetchLeads();
+  }, []);
 
   const fetchLeads = async () => {
     try {
@@ -77,32 +71,6 @@ const LeadsAdmin: React.FC = () => {
     window.URL.revokeObjectURL(url);
   };
 
-  if (!authenticated) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Admin Access</h1>
-          <div className="space-y-4">
-            <input
-              type="password"
-              placeholder="Enter password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
-            />
-            <button
-              onClick={handleLogin}
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Login
-            </button>
-            {error && <p className="text-red-600 text-sm">{error}</p>}
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (loading) {
     return (
@@ -124,7 +92,10 @@ const LeadsAdmin: React.FC = () => {
               <h1 className="text-2xl font-bold text-gray-900">Lead Dashboard</h1>
               <p className="text-gray-600">Total leads: {leads.length}</p>
             </div>
-            <div className="space-x-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-sm text-gray-600">
+                Welcome, <span className="font-medium">{authState.user?.username}</span>
+              </div>
               <button
                 onClick={fetchLeads}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -136,6 +107,12 @@ const LeadsAdmin: React.FC = () => {
                 className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
               >
                 Export CSV
+              </button>
+              <button
+                onClick={logout}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                Logout
               </button>
             </div>
           </div>

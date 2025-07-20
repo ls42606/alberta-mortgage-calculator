@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { Home, DollarSign, Percent, Calculator, ArrowRight, Shield } from 'lucide-react';
-import { TrendingUp, CheckCircle, Loader2, Sparkles, Award, X, Maximize2 } from 'lucide-react';
+import React, { useState, Suspense, lazy } from 'react';
+import { Shield, TrendingUp, Loader2, Sparkles, Award, X, Maximize2 } from 'lucide-react';
 import ProgressSteps from './ProgressSteps';
-import PurposeStep from './steps/PurposeStep';
-import PropertyStep from './steps/PropertyStep';
-import FinancialStep from './steps/FinancialStep';
-import ContactStep from './steps/ContactStep';
-import ResultsStep from './steps/ResultsStep';
+import LoadingSpinner from './ui/LoadingSpinner';
+
+// Lazy-loaded step components for better code splitting
+const PurposeStep = lazy(() => import('./steps/PurposeStep'));
+const PropertyStep = lazy(() => import('./steps/PropertyStep'));
+const FinancialStep = lazy(() => import('./steps/FinancialStep'));
+const ContactStep = lazy(() => import('./steps/ContactStep'));
+const ResultsStep = lazy(() => import('./steps/ResultsStep'));
 
 export interface FormData {
   purpose: string;
@@ -89,45 +91,57 @@ const MortgageForm: React.FC<MortgageFormProps> = ({
 
   const renderStep = () => {
     if (showResults) {
-      return <ResultsStep formData={formData} />;
+      return (
+        <Suspense fallback={<LoadingSpinner size="md" message="Loading results..." />}>
+          <ResultsStep formData={formData} />
+        </Suspense>
+      );
     }
 
     switch (currentStep) {
       case 1:
         return (
-          <PurposeStep
-            value={formData.purpose}
-            onChange={(purpose) => updateFormData({ purpose })}
-            onNext={nextStep}
-          />
+          <Suspense fallback={<LoadingSpinner size="md" message="Loading step..." />}>
+            <PurposeStep
+              value={formData.purpose}
+              onChange={(purpose) => updateFormData({ purpose })}
+              onNext={nextStep}
+            />
+          </Suspense>
         );
       case 2:
         return (
-          <PropertyStep
-            formData={formData}
-            onChange={updateFormData}
-            onNext={nextStep}
-            onPrev={prevStep}
-          />
+          <Suspense fallback={<LoadingSpinner size="md" message="Loading step..." />}>
+            <PropertyStep
+              formData={formData}
+              onChange={updateFormData}
+              onNext={nextStep}
+              onPrev={prevStep}
+            />
+          </Suspense>
         );
       case 3:
         return (
-          <FinancialStep
-            formData={formData}
-            onChange={updateFormData}
-            onNext={nextStep}
-            onPrev={prevStep}
-          />
+          <Suspense fallback={<LoadingSpinner size="md" message="Loading step..." />}>
+            <FinancialStep
+              formData={formData}
+              onChange={updateFormData}
+              onNext={nextStep}
+              onPrev={prevStep}
+            />
+          </Suspense>
         );
       case 4:
         return (
-          <ContactStep
-            formData={formData}
-            onChange={updateFormData}
-            onPrev={prevStep}
-            onSubmit={handleSubmit}
-            isSubmitting={isSubmitting}
-          />
+          <Suspense fallback={<LoadingSpinner size="md" message="Loading step..." />}>
+            <ContactStep
+              formData={formData}
+              onChange={updateFormData}
+              onPrev={prevStep}
+              onSubmit={handleSubmit}
+              isSubmitting={isSubmitting}
+            />
+          </Suspense>
         );
       default:
         return null;
@@ -137,26 +151,28 @@ const MortgageForm: React.FC<MortgageFormProps> = ({
   return (
     <div className={`professional-card overflow-hidden transition-all duration-700 ease-in-out ${
       isFullScreen 
-        ? 'fixed inset-4 z-50 shadow-2xl animate-scale-in' 
+        ? 'fixed inset-2 sm:inset-4 z-50 shadow-2xl animate-scale-in' 
         : 'shadow-lg hover:shadow-xl'
-    }`}>
+    }`} role="main" aria-label="Mortgage application form">
       {/* Enhanced Header with professional gradient */}
       <div className="relative bg-gradient-to-r from-emerald-700 via-emerald-800 to-emerald-900 text-white px-4 sm:px-6 lg:px-8 py-6 sm:py-8 text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-700/95 to-emerald-900/95" />
         <div className="relative z-10 space-y-3 sm:space-y-4">
           <div className="flex items-center justify-center space-x-2 sm:space-x-3">
-            <Sparkles size={18} className="animate-pulse-professional flex-shrink-0" />
-            <h2 className={`font-bold tracking-tight transition-all duration-500 ${
-              isFullScreen ? 'text-2xl sm:text-3xl lg:text-4xl' : 'text-xl sm:text-2xl lg:text-3xl'
-            }`}>
+            <Sparkles size={isFullScreen ? 24 : 18} className="animate-pulse-professional flex-shrink-0" />
+            <h1 className={`font-bold tracking-tight transition-all duration-500 ${
+              isFullScreen ? 'text-3xl sm:text-4xl lg:text-5xl' : 'text-xl sm:text-2xl lg:text-3xl'
+            }`} id="form-title">
               Professional Mortgage Analysis
-            </h2>
-            <Sparkles size={18} className="animate-pulse-professional flex-shrink-0" />
+            </h1>
+            <Sparkles size={isFullScreen ? 24 : 18} className="animate-pulse-professional flex-shrink-0" />
           </div>
-          <div className="text-emerald-100 text-xs sm:text-sm font-semibold">
+          <div className={`text-emerald-100 font-semibold ${
+            isFullScreen ? 'text-sm sm:text-base lg:text-lg' : 'text-xs sm:text-sm'
+          }`}>
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
               <span className="flex items-center space-x-1">
-                <Shield size={14} className="flex-shrink-0" />
+                <Shield size={isFullScreen ? 18 : 14} className="flex-shrink-0" />
                 <span>No credit impact</span>
               </span>
               <span className="hidden sm:inline">•</span>
@@ -196,9 +212,9 @@ const MortgageForm: React.FC<MortgageFormProps> = ({
 
       <div className={`transition-all duration-500 ${
         isFullScreen && !showResults 
-          ? 'p-6 sm:p-8 lg:p-12 max-h-[calc(100vh-200px)] overflow-y-auto' 
+          ? 'p-3 sm:p-8 lg:p-12 max-h-[calc(100vh-160px)] overflow-y-auto' 
           : isFullScreen && showResults 
-          ? 'p-4 sm:p-6 lg:p-8 max-h-[calc(100vh-180px)] overflow-y-auto' 
+          ? 'p-3 sm:p-6 lg:p-8 max-h-[calc(100vh-140px)] overflow-y-auto' 
           : 'p-6 sm:p-8 lg:p-10'
       }`}>
         {isSubmitting ? (
@@ -240,7 +256,7 @@ const MortgageForm: React.FC<MortgageFormProps> = ({
         </div>
         <div className="flex items-center space-x-2">
           <Award size={14} className="text-brand-gold flex-shrink-0" />
-          <span>Information Only</span>
+          <span>Trusted Calculations</span>
         </div>
       </div>
     </div>

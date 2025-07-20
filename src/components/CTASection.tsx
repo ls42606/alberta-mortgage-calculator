@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle, Calculator, Home, DollarSign, Shield, Clock, Award, Calendar, BookOpen } from 'lucide-react';
+import { CheckCircle, Shield, Clock, Award, Calendar, BookOpen } from 'lucide-react';
 
 const CTASection: React.FC = () => {
   const scrollToCalculatorWithFullScreen = () => {
@@ -92,6 +92,7 @@ const CTASection: React.FC = () => {
           <button 
             onClick={scrollToCalculatorWithFullScreen}
             className="group px-12 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl font-bold text-lg shadow-2xl hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 hover:shadow-emerald hover:scale-105 transform"
+            aria-label="Start mortgage application process"
           >
             <div className="flex items-center justify-center space-x-3">
               <Calendar size={24} />
@@ -103,6 +104,7 @@ const CTASection: React.FC = () => {
           <a
             href="/blog"
             className="group px-10 py-5 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center justify-center space-x-3"
+            aria-label="Access educational resources and mortgage learning materials"
           >
             <BookOpen size={24} className="group-hover:animate-bounce-gentle" />
             <span>Learn More</span>

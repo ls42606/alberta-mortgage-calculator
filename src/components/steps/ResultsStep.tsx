@@ -187,13 +187,19 @@ const ResultsStep: React.FC<ResultsStepProps> = ({ formData }) => {
 
         {/* Enhanced CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-          <button className="flex items-center justify-center space-x-3 px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-            <Calculator className="w-5 h-5" />
+          <button 
+            className="flex items-center justify-center space-x-3 px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            aria-label="Explore additional mortgage calculation tools"
+          >
+            <Calculator className="w-5 h-5" aria-hidden="true" />
             <span>Explore Other Tools</span>
           </button>
           
-          <button className="flex items-center justify-center space-x-3 px-6 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-all duration-300">
-            <Compass className="w-5 h-5" />
+          <button 
+            className="flex items-center justify-center space-x-3 px-6 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-all duration-300"
+            aria-label="Access educational resources about mortgages"
+          >
+            <Compass className="w-5 h-5" aria-hidden="true" />
             <span>Learn More About Mortgages</span>
           </button>
         </div>

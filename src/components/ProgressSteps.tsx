@@ -6,7 +6,7 @@ interface ProgressStepsProps {
   steps: string[];
 }
 
-const ProgressSteps: React.FC<ProgressStepsProps> = ({ currentStep, steps }) => {
+const ProgressSteps: React.FC<ProgressStepsProps> = ({ currentStep }) => {
   const stepsArray = [
     { number: 1, label: 'Purpose' },
     { number: 2, label: 'Property' },

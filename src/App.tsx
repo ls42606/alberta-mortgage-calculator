@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -7,25 +7,33 @@ import CalculatorShowcase from './components/CalculatorShowcase';
 import TrustSection from './components/TrustSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
+import LoadingSpinner from './components/ui/LoadingSpinner';
 
-// Calculator Pages
-import MortgagePaymentCalculator from './pages/calculators/MortgagePaymentCalculator';
-import AffordabilityCalculator from './pages/calculators/AffordabilityCalculator';
-import RefinanceCalculator from './pages/calculators/RefinanceCalculator';
-import PrepaymentCalculator from './pages/calculators/PrepaymentCalculator';
-import DebtConsolidationCalculator from './pages/calculators/DebtConsolidationCalculator';
-import CommercialCalculator from './pages/calculators/CommercialCalculator';
-import HELOCCalculator from './pages/calculators/HELOCCalculator';
-import StressTestCalculator from './pages/calculators/StressTestCalculator';
-import LandTransferTaxCalculator from './pages/calculators/LandTransferTaxCalculator';
+// Lazy-loaded Calculator Pages
+const MortgagePaymentCalculator = lazy(() => import('./pages/calculators/MortgagePaymentCalculator'));
+const AffordabilityCalculator = lazy(() => import('./pages/calculators/AffordabilityCalculator'));
+const RefinanceCalculator = lazy(() => import('./pages/calculators/RefinanceCalculator'));
+const PrepaymentCalculator = lazy(() => import('./pages/calculators/PrepaymentCalculator'));
+const DebtConsolidationCalculator = lazy(() => import('./pages/calculators/DebtConsolidationCalculator'));
+const CommercialCalculator = lazy(() => import('./pages/calculators/CommercialCalculator'));
+const HELOCCalculator = lazy(() => import('./pages/calculators/HELOCCalculator'));
+const StressTestCalculator = lazy(() => import('./pages/calculators/StressTestCalculator'));
+const LandTransferTaxCalculator = lazy(() => import('./pages/calculators/LandTransferTaxCalculator'));
 
-// Blog Pages
-import BlogIndex from './pages/blog/BlogIndex';
-import BlogPost from './pages/blog/BlogPost';
+// Lazy-loaded Blog Pages
+const BlogIndex = lazy(() => import('./pages/blog/BlogIndex'));
+const BlogPost = lazy(() => import('./pages/blog/BlogPost'));
 
-// Admin Pages
-import { ContentDashboard } from './components/admin/ContentDashboard';
-import LeadsAdmin from './pages/admin/LeadsAdmin';
+// Lazy-loaded Other Pages
+const Contact = lazy(() => import('./pages/Contact'));
+
+// Lazy-loaded Admin Pages
+const ContentDashboard = lazy(() => import('./components/admin/ContentDashboard').then(module => ({ default: module.ContentDashboard })));
+const LeadsAdmin = lazy(() => import('./pages/admin/LeadsAdmin'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+// Auth Components (keep these synchronous for faster auth flow)
+import { AuthProvider, Login, ProtectedRoute, useAuth } from './components/auth';
 
 // Component to handle hash navigation and scroll to top
 const ScrollToTop: React.FC = () => {
@@ -53,34 +61,170 @@ function HomePage() {
   );
 }
 
+const AppRoutes: React.FC = () => {
+  const { authState, login } = useAuth();
+
+  return (
+    <Routes>
+      {/* Main Funnel Page */}
+      <Route path="/" element={<HomePage />} />
+      
+      {/* Calculator Pages - Wrapped with Suspense */}
+      <Route 
+        path="/calculators/mortgage-payment" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Mortgage Payment Calculator..." />}>
+            <MortgagePaymentCalculator />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/calculators/affordability" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Affordability Calculator..." />}>
+            <AffordabilityCalculator />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/calculators/refinance" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Refinance Calculator..." />}>
+            <RefinanceCalculator />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/calculators/prepayment" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Prepayment Calculator..." />}>
+            <PrepaymentCalculator />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/calculators/debt-consolidation" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Debt Consolidation Calculator..." />}>
+            <DebtConsolidationCalculator />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/calculators/commercial" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Commercial Calculator..." />}>
+            <CommercialCalculator />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/calculators/heloc" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading HELOC Calculator..." />}>
+            <HELOCCalculator />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/calculators/stress-test" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Stress Test Calculator..." />}>
+            <StressTestCalculator />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/calculators/land-transfer-tax" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Land Transfer Tax Calculator..." />}>
+            <LandTransferTaxCalculator />
+          </Suspense>
+        } 
+      />
+      
+      {/* Blog Pages - Wrapped with Suspense */}
+      <Route 
+        path="/blog" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Blog..." />}>
+            <BlogIndex />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/blog/:slug" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Article..." />}>
+            <BlogPost />
+          </Suspense>
+        } 
+      />
+      
+      {/* Contact Page - Wrapped with Suspense */}
+      <Route 
+        path="/contact" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Contact Page..." />}>
+            <Contact />
+          </Suspense>
+        } 
+      />
+      
+      {/* Auth Routes */}
+      <Route 
+        path="/login" 
+        element={
+          <Login 
+            onLogin={login}
+            isAuthenticated={authState.isAuthenticated}
+          />
+        } 
+      />
+      
+      {/* Protected Admin Routes - Wrapped with Suspense */}
+      <Route 
+        path="/admin" 
+        element={
+          <ProtectedRoute isAuthenticated={authState.isAuthenticated}>
+            <Suspense fallback={<LoadingSpinner size="lg" message="Loading Admin Dashboard..." />}>
+              <ContentDashboard />
+            </Suspense>
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/admin/leads" 
+        element={
+          <ProtectedRoute isAuthenticated={authState.isAuthenticated}>
+            <Suspense fallback={<LoadingSpinner size="lg" message="Loading Leads Dashboard..." />}>
+              <LeadsAdmin />
+            </Suspense>
+          </ProtectedRoute>
+        } 
+      />
+      
+      {/* 404 Page - Wrapped with Suspense */}
+      <Route 
+        path="*" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading..." />}>
+            <NotFound />
+          </Suspense>
+        } 
+      />
+    </Routes>
+  );
+};
+
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        {/* Main Funnel Page */}
-        <Route path="/" element={<HomePage />} />
-        
-        {/* Calculator Pages */}
-        <Route path="/calculators/mortgage-payment" element={<MortgagePaymentCalculator />} />
-        <Route path="/calculators/affordability" element={<AffordabilityCalculator />} />
-        <Route path="/calculators/refinance" element={<RefinanceCalculator />} />
-        <Route path="/calculators/prepayment" element={<PrepaymentCalculator />} />
-        <Route path="/calculators/debt-consolidation" element={<DebtConsolidationCalculator />} />
-        <Route path="/calculators/commercial" element={<CommercialCalculator />} />
-        <Route path="/calculators/heloc" element={<HELOCCalculator />} />
-        <Route path="/calculators/stress-test" element={<StressTestCalculator />} />
-        <Route path="/calculators/land-transfer-tax" element={<LandTransferTaxCalculator />} />
-        
-        {/* Blog Pages */}
-        <Route path="/blog" element={<BlogIndex />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
-        
-        {/* Admin Dashboard */}
-        <Route path="/admin" element={<ContentDashboard />} />
-        <Route path="/admin/leads" element={<LeadsAdmin />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <ScrollToTop />
+        <AppRoutes />
+      </Router>
+    </AuthProvider>
   );
 }
 

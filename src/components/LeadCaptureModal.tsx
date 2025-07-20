@@ -1,13 +1,14 @@
 import React from 'react';
 import { X } from 'lucide-react';
 import LeadCaptureForm from './LeadCaptureForm';
+import { CalculationResults } from '../types/services';
 
 interface LeadCaptureModalProps {
   isOpen: boolean;
   onClose: () => void;
   source?: string;
   calculatorType?: string;
-  calculationResults?: Record<string, any>;
+  calculationResults?: CalculationResults;
 }
 
 const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({

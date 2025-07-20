@@ -1,10 +1,11 @@
 import { BlogPost, ContentGenerationRequest, ContentSchedule } from '../types/blog';
 import { BlogService } from './blogService';
 import { AnalyticsService } from './analyticsService';
+import { CompetitorAnalysis, DesignSystemColors, DesignSystemTypography, DesignSystemSpacing, DesignSystemComponents, LandingPageMetadata, ABTestResult } from '../types/services';
 
 export interface ContentStrategy {
   targetKeywords: string[];
-  competitorAnalysis: Record<string, any>;
+  competitorAnalysis: CompetitorAnalysis;
   contentGaps: string[];
   seasonalOpportunities: Array<{
     topic: string;
@@ -14,19 +15,10 @@ export interface ContentStrategy {
 }
 
 export interface DesignSystem {
-  colors: {
-    primary: string[];
-    secondary: string[];
-    accent: string[];
-    neutral: string[];
-  };
-  typography: {
-    headings: string[];
-    body: string[];
-    sizes: Record<string, string>;
-  };
-  spacing: Record<string, string>;
-  components: Record<string, any>;
+  colors: DesignSystemColors;
+  typography: DesignSystemTypography;
+  spacing: DesignSystemSpacing;
+  components: DesignSystemComponents;
 }
 
 export class ContentManagementService {
@@ -117,7 +109,7 @@ export class ContentManagementService {
     return strategy;
   }
 
-  private async analyzeCompetitors(): Promise<Record<string, any>> {
+  private async analyzeCompetitors(): Promise<CompetitorAnalysis> {
     // This would use web scraping or API calls to analyze competitor content
     return {
       'ratehub.ca': {
@@ -211,8 +203,6 @@ export class ContentManagementService {
 
     // Update schedule item status
     scheduleItem.status = 'published';
-    
-    console.log(`Published: ${post.title}`);
   }
 
   private async getKeywordsForTopic(topic: string): Promise<string[]> {
@@ -232,7 +222,6 @@ export class ContentManagementService {
       if (analytics.views < 100 || analytics.bounceRate > 70) {
         // Optimize low-performing content
         const optimizedPost = await this.blogService.optimizeForSEO(post);
-        console.log(`Optimized: ${optimizedPost.title}`);
       }
     }
   }
@@ -263,11 +252,7 @@ export class ContentManagementService {
     return [baseColor, baseColor + '80', baseColor + '60', baseColor + '40'];
   }
 
-  async A_BTestDesigns(designA: DesignSystem, designB: DesignSystem): Promise<{
-    winner: 'A' | 'B';
-    metrics: Record<string, number>;
-    confidence: number;
-  }> {
+  async A_BTestDesigns(designA: DesignSystem, designB: DesignSystem): Promise<ABTestResult> {
     // This would implement A/B testing for design variations
     // For now, returning a mock result
     return {
@@ -284,7 +269,7 @@ export class ContentManagementService {
   async generateLandingPage(topic: string, targetKeywords: string[]): Promise<{
     html: string;
     css: string;
-    metadata: Record<string, any>;
+    metadata: LandingPageMetadata;
   }> {
     // AI-generated landing page
     const template = `
@@ -355,15 +340,11 @@ export class ContentManagementService {
     await this.generateWeeklyContent();
     await this.optimizeExistingContent();
     await this.updateContentSchedule();
-    
-    console.log('Content workflow automation completed');
   }
 
   private async generateWeeklyContent(): Promise<void> {
     const strategy = await this.generateContentStrategy();
     const newPosts = await this.blogService.generateWeeklyContent();
-    
-    console.log(`Generated ${newPosts.length} new posts`);
   }
 
   private async updateContentSchedule(): Promise<void> {

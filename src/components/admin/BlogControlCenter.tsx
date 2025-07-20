@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BlogService } from '../../services/blogService';
 import { BlogPost } from '../../types/blog';
 
@@ -24,11 +24,7 @@ export const BlogControlCenter: React.FC = () => {
 
   const blogService = BlogService.getInstance();
 
-  useEffect(() => {
-    loadPosts();
-  }, []);
-
-  const loadPosts = async () => {
+  const loadPosts = useCallback(async () => {
     // Load published posts
     const published = blogService.getAllPosts();
     setPublishedPosts(published);
@@ -73,7 +69,11 @@ export const BlogControlCenter: React.FC = () => {
       }
     ];
     setDraftPosts(drafts);
-  };
+  }, [blogService]);
+
+  useEffect(() => {
+    loadPosts();
+  }, [loadPosts]);
 
   const generateNewPost = async () => {
     setIsGenerating(true);

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { User, Mail, DollarSign, MessageCircle, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { User, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { CalculationResults, LeadFormSubmission } from '../types/services';
 
 interface LeadCaptureFormProps {
   source?: string;
   calculatorType?: string;
-  calculationResults?: Record<string, any>;
+  calculationResults?: CalculationResults;
   onClose?: () => void;
 }
 
@@ -60,7 +61,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     return true;
   };
 
-  const saveLead = async (leadData: any): Promise<void> => {
+  const saveLead = async (leadData: LeadFormSubmission): Promise<void> => {
     try {
       const response = await fetch('/.netlify/functions/leads', {
         method: 'POST',
@@ -140,6 +141,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             <button
               onClick={onClose}
               className="mt-6 bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors duration-300"
+              aria-label="Close success message and continue"
             >
               Continue
             </button>
@@ -155,17 +157,17 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
           <User size={24} className="text-white" />
         </div>
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Get Expert Guidance</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2" id="lead-form-title">Get Expert Guidance</h3>
         <p className="text-gray-600 text-sm">
           Connect with licensed mortgage professionals for personalized advice
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-labelledby="lead-form-title">
         {status === 'error' && errorMessage && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start space-x-3">
-            <AlertCircle size={20} className="text-red-600 mt-0.5 flex-shrink-0" />
-            <p className="text-red-800 text-sm">{errorMessage}</p>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start space-x-3" role="alert" aria-live="polite">
+            <AlertCircle size={20} className="text-red-600 mt-0.5 flex-shrink-0" aria-hidden="true" />
+            <p className="text-red-800 text-sm" id="form-error">{errorMessage}</p>
           </div>
         )}
 
@@ -182,7 +184,11 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-500"
             placeholder="Enter your full name"
             required
+            aria-describedby="name-required"
+            aria-required="true"
+            aria-invalid={status === 'error' && !formData.name.trim()}
           />
+          <span id="name-required" className="sr-only">Required field</span>
         </div>
 
         <div>
@@ -198,7 +204,12 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-500"
             placeholder="Enter your email address"
             required
+            aria-describedby="email-required email-format"
+            aria-required="true"
+            aria-invalid={status === 'error' && (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))}
           />
+          <span id="email-required" className="sr-only">Required field</span>
+          <span id="email-format" className="sr-only">Must be a valid email address</span>
         </div>
 
 
@@ -214,7 +225,9 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             onChange={handleInputChange}
             className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-500"
             placeholder="e.g., $500,000"
+            aria-describedby="mortgage-amount-help"
           />
+          <span id="mortgage-amount-help" className="sr-only">Optional field for mortgage amount estimate</span>
         </div>
 
         <div>
@@ -229,7 +242,9 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             rows={4}
             className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-200 bg-gray-50 focus:bg-white text-gray-900 placeholder-gray-500 resize-none"
             placeholder="Tell us about your mortgage needs or any specific questions..."
+            aria-describedby="message-help"
           />
+          <span id="message-help" className="sr-only">Optional field for additional details about your mortgage needs</span>
         </div>
 
         <div className="pt-6">
@@ -237,6 +252,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             type="submit"
             disabled={status === 'submitting'}
             className="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-semibold py-4 px-6 rounded-2xl hover:from-emerald-700 hover:to-emerald-800 focus:ring-4 focus:ring-emerald-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3 shadow-lg shadow-emerald-600/25"
+            aria-label={status === 'submitting' ? "Submitting your request, please wait" : "Submit form to get expert guidance"}
+            aria-describedby={status === 'error' && errorMessage ? 'form-error' : undefined}
           >
             {status === 'submitting' ? (
               <>

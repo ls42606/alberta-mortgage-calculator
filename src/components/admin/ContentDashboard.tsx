@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import { ContentManagementService } from '../../services/contentManagementService';
 import { AnalyticsService } from '../../services/analyticsService';
 import { BlogService } from '../../services/blogService';
 import { BlogPost, ContentSchedule } from '../../types/blog';
 import { AnalyticsMetrics } from '../../services/analyticsService';
-import { BlogControlCenter } from './BlogControlCenter';
-import { LeadDashboard } from './LeadDashboard';
+import { DashboardTab } from '../../types/admin';
+import { useAuth } from '../auth';
+import LoadingSpinner from '../ui/LoadingSpinner';
+
+// Lazy-loaded admin components
+const BlogControlCenter = lazy(() => import('./BlogControlCenter').then(module => ({ default: module.BlogControlCenter })));
+const LeadDashboard = lazy(() => import('./LeadDashboard').then(module => ({ default: module.LeadDashboard })));
 
 export const ContentDashboard: React.FC = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [schedule, setSchedule] = useState<ContentSchedule[]>([]);
   const [analytics, setAnalytics] = useState<AnalyticsMetrics | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'overview' | 'leads' | 'blog' | 'analytics'>('overview');
+  const [activeTab, setActiveTab] = useState<DashboardTab['key']>('overview');
 
+  const { authState, logout } = useAuth();
   const contentService = ContentManagementService.getInstance();
   const analyticsService = AnalyticsService.getInstance();
   const blogService = BlogService.getInstance();
 
-  useEffect(() => {
-    loadDashboardData();
-  }, []);
-
-  const loadDashboardData = async () => {
+  const loadDashboardData = useCallback(async () => {
     try {
       setLoading(true);
       const [postsData, scheduleData, analyticsData] = await Promise.all([
@@ -39,7 +41,11 @@ export const ContentDashboard: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [blogService, contentService, analyticsService]);
+
+  useEffect(() => {
+    loadDashboardData();
+  }, [loadDashboardData]);
 
   const handleGenerateContent = async (topic: string, category: string) => {
     try {
@@ -84,23 +90,36 @@ export const ContentDashboard: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Content Management Dashboard</h1>
-        <p className="text-gray-600">Manage your Alberta Mortgage Calculator content and analytics</p>
+      <div className="mb-8 flex justify-between items-start">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Content Management Dashboard</h1>
+          <p className="text-gray-600">Manage your Alberta Mortgage Calculator content and analytics</p>
+        </div>
+        <div className="flex items-center space-x-4">
+          <div className="text-sm text-gray-600">
+            Welcome, <span className="font-medium">{authState.user?.username}</span>
+          </div>
+          <button
+            onClick={logout}
+            className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+          >
+            Logout
+          </button>
+        </div>
       </div>
 
       {/* Tab Navigation */}
       <div className="border-b border-gray-200 mb-6">
         <nav className="-mb-px flex space-x-8">
-          {[
+          {([
             { key: 'overview', label: 'Overview' },
             { key: 'leads', label: 'Leads' },
             { key: 'blog', label: 'Blog Control' },
             { key: 'analytics', label: 'Analytics' }
-          ].map(tab => (
+          ] as DashboardTab[]).map(tab => (
             <button
               key={tab.key}
-              onClick={() => setActiveTab(tab.key as any)}
+              onClick={() => setActiveTab(tab.key)}
               className={`py-2 px-1 border-b-2 font-medium text-sm ${
                 activeTab === tab.key
                   ? 'border-blue-500 text-blue-600'
@@ -136,10 +155,18 @@ export const ContentDashboard: React.FC = () => {
       )}
 
       {/* Leads Tab */}
-      {activeTab === 'leads' && <LeadDashboard />}
+      {activeTab === 'leads' && (
+        <Suspense fallback={<LoadingSpinner size="lg" message="Loading Lead Dashboard..." />}>
+          <LeadDashboard />
+        </Suspense>
+      )}
 
       {/* Blog Control Tab */}
-      {activeTab === 'blog' && <BlogControlCenter />}
+      {activeTab === 'blog' && (
+        <Suspense fallback={<LoadingSpinner size="lg" message="Loading Blog Control Center..." />}>
+          <BlogControlCenter />
+        </Suspense>
+      )}
 
       {/* Analytics Tab */}
       {activeTab === 'analytics' && analytics && (

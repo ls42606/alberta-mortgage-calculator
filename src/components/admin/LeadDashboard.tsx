@@ -1,41 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { AnalyticsService } from '../../services/analyticsService';
+import { Lead, LeadMetrics, LeadSortOption } from '../../types/admin';
 
-interface Lead {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  propertyValue: number;
-  downPayment: number;
-  income: number;
-  creditScore: number;
-  employmentType: string;
-  propertyType: string;
-  location: string;
-  source: string;
-  score: number;
-  status: 'new' | 'contacted' | 'qualified' | 'unqualified' | 'closed';
-  createdAt: Date;
-  notes: string[];
-}
-
-interface LeadMetrics {
-  totalLeads: number;
-  newLeads: number;
-  qualifiedLeads: number;
-  conversionRate: number;
-  avgLeadValue: number;
-  topSources: Array<{ source: string; count: number }>;
-  monthlyTrend: Array<{ month: string; leads: number }>;
-}
 
 export const LeadDashboard: React.FC = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [metrics, setMetrics] = useState<LeadMetrics | null>(null);
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
-  const [sortBy, setSortBy] = useState<'score' | 'date' | 'value'>('score');
+  const [sortBy, setSortBy] = useState<LeadSortOption['value']>('score');
 
   const analyticsService = AnalyticsService.getInstance();
 
@@ -258,7 +231,7 @@ export const LeadDashboard: React.FC = () => {
             </select>
             <select 
               value={sortBy} 
-              onChange={(e) => setSortBy(e.target.value as any)}
+              onChange={(e) => setSortBy(e.target.value as LeadSortOption['value'])}
               className="border rounded-lg px-3 py-2"
             >
               <option value="score">Sort by Score</option>

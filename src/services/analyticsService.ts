@@ -1,4 +1,5 @@
-import { BlogPost, BlogAnalytics } from '../types/blog';
+import { BlogAnalytics } from '../types/blog';
+import { ConversionEventMetadata, CalculatorUsageInputs, AnalyticsReportMetadata } from '../types/services';
 
 export interface AnalyticsMetrics {
   pageViews: number;
@@ -20,7 +21,7 @@ export interface ConversionEvent {
   userId?: string;
   source: string;
   value?: number;
-  metadata?: Record<string, any>;
+  metadata?: ConversionEventMetadata;
 }
 
 export class AnalyticsService {
@@ -54,23 +55,31 @@ export class AnalyticsService {
   async initializeGoogleAnalytics(gaId: string): Promise<void> {
     // Initialize Google Analytics 4
     if (typeof window !== 'undefined') {
-      (window as any).gtag = (window as any).gtag || function() {
-        ((window as any).gtag.q = (window as any).gtag.q || []).push(arguments);
+      const windowWithGtag = window as Window & { 
+        gtag?: { (...args: unknown[]): void; q?: unknown[] }; 
       };
-      (window as any).gtag('js', new Date());
-      (window as any).gtag('config', gaId);
+      const gtag = windowWithGtag.gtag || function(...args: unknown[]) {
+        (windowWithGtag.gtag as { q?: unknown[] }).q = (windowWithGtag.gtag as { q?: unknown[] }).q || [];
+        ((windowWithGtag.gtag as { q?: unknown[] }).q as unknown[]).push(args);
+      };
+      windowWithGtag.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', gaId);
     }
   }
 
   async trackPageView(path: string, title: string): Promise<void> {
     this.metrics.pageViews++;
     
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'page_view', {
-        page_title: title,
-        page_location: window.location.href,
-        page_path: path
-      });
+    if (typeof window !== 'undefined') {
+      const windowWithGtag = window as Window & { gtag?: (...args: unknown[]) => void };
+      if (windowWithGtag.gtag) {
+        windowWithGtag.gtag('event', 'page_view', {
+          page_title: title,
+          page_location: window.location.href,
+          page_path: path
+        });
+      }
     }
 
     // Update top pages
@@ -87,7 +96,7 @@ export class AnalyticsService {
       .slice(0, 10);
   }
 
-  async trackCalculatorUsage(calculatorType: string, inputs: Record<string, any>): Promise<void> {
+  async trackCalculatorUsage(calculatorType: string, inputs: CalculatorUsageInputs): Promise<void> {
     const event: ConversionEvent = {
       type: 'calculator_use',
       timestamp: new Date(),
@@ -100,11 +109,14 @@ export class AnalyticsService {
     // Update calculator usage metrics
     this.metrics.calculatorUsage[calculatorType] = (this.metrics.calculatorUsage[calculatorType] || 0) + 1;
 
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'calculator_use', {
-        calculator_type: calculatorType,
-        custom_parameter: JSON.stringify(inputs)
-      });
+    if (typeof window !== 'undefined') {
+      const windowWithGtag = window as Window & { gtag?: (...args: unknown[]) => void };
+      if (windowWithGtag.gtag) {
+        windowWithGtag.gtag('event', 'calculator_use', {
+          calculator_type: calculatorType,
+          custom_parameter: JSON.stringify(inputs)
+        });
+      }
     }
   }
 
@@ -115,16 +127,19 @@ export class AnalyticsService {
     const totalConversions = this.conversions.length;
     this.metrics.conversionRate = (totalConversions / this.metrics.pageViews) * 100;
 
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'conversion', {
-        event_type: event.type,
-        value: event.value || 0,
-        currency: 'CAD'
-      });
+    if (typeof window !== 'undefined') {
+      const windowWithGtag = window as Window & { gtag?: (...args: unknown[]) => void };
+      if (windowWithGtag.gtag) {
+        windowWithGtag.gtag('event', 'conversion', {
+          event_type: event.type,
+          value: event.value || 0,
+          currency: 'CAD'
+        });
+      }
     }
   }
 
-  async getBlogAnalytics(postId: string): Promise<BlogAnalytics> {
+  async getBlogAnalytics(): Promise<BlogAnalytics> {
     // This would integrate with your analytics provider
     const analytics: BlogAnalytics = {
       views: Math.floor(Math.random() * 1000) + 100,
@@ -198,20 +213,11 @@ export class AnalyticsService {
   async trackUserJourney(userId: string, events: Array<{
     event: string;
     timestamp: Date;
-    metadata?: Record<string, any>;
+    metadata?: AnalyticsReportMetadata;
   }>): Promise<void> {
     // Track user journey through the site
-    const journey = {
-      userId,
-      events,
-      startTime: events[0]?.timestamp,
-      endTime: events[events.length - 1]?.timestamp,
-      totalTime: events.length > 1 ? 
-        events[events.length - 1].timestamp.getTime() - events[0].timestamp.getTime() : 0
-    };
-
-    // Store journey data for analysis
-    console.log('User Journey:', journey);
+    // Store journey data for analysis (implementation would go here)
+    console.log('Tracking user journey for:', userId, 'events:', events.length);
   }
 
   async exportAnalytics(format: 'csv' | 'json' | 'excel'): Promise<string> {
@@ -234,7 +240,7 @@ export class AnalyticsService {
     }
   }
 
-  private convertToCSV(data: any): string {
+  private convertToCSV(data: { metrics: AnalyticsMetrics; [key: string]: unknown }): string {
     const csvLines: string[] = [];
     
     // Convert metrics to CSV

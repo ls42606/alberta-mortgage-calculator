@@ -47,11 +47,12 @@ const PurposeStep: React.FC<PurposeStepProps> = ({ value, onChange, onNext }) =>
   return (
     <FormStep>
       <div className="mb-8 text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-3">Your mortgage goals</h3>
+        <h3 className="text-2xl font-bold text-gray-900 mb-3" id="purpose-step-title">Your mortgage goals</h3>
         <p className="text-gray-600 leading-relaxed">Tell us what you're looking to accomplish</p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <fieldset className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8" aria-labelledby="purpose-step-title">
+        <legend className="sr-only">Select your mortgage purpose</legend>
         {options.map((option) => (
           <div
             key={option.value}
@@ -61,6 +62,16 @@ const PurposeStep: React.FC<PurposeStepProps> = ({ value, onChange, onNext }) =>
                 : 'border-gray-200 hover:border-emerald-300 bg-white hover:bg-gray-50'
             }`}
             onClick={() => handleOptionSelect(option.value)}
+            role="button"
+            tabIndex={0}
+            aria-pressed={value === option.value}
+            aria-label={`Select ${option.title}: ${option.description}`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleOptionSelect(option.value);
+              }
+            }}
           >
             <div className="flex items-center space-x-4 mb-4">
               <div className={`p-3 rounded-xl ${
@@ -81,7 +92,7 @@ const PurposeStep: React.FC<PurposeStepProps> = ({ value, onChange, onNext }) =>
             )}
           </div>
         ))}
-      </div>
+      </fieldset>
 
       <div className="flex justify-end">
         <button
@@ -89,6 +100,7 @@ const PurposeStep: React.FC<PurposeStepProps> = ({ value, onChange, onNext }) =>
           className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={onNext}
           disabled={!value}
+          aria-label={value ? "Continue to property details step" : "Please select a mortgage purpose to continue"}
         >
           Continue to Property Details
         </button>

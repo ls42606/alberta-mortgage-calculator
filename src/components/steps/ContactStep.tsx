@@ -32,7 +32,7 @@ const ContactStep: React.FC<ContactStepProps> = ({
     <FormStep>
       <div className="space-y-professional">
         <div className="text-center space-y-4">
-          <h3 className="heading-md text-gray-900">Final step</h3>
+          <h3 className="heading-md text-gray-900" id="contact-step-title">Final step</h3>
           <p className="body-md text-gray-600 max-w-md mx-auto">
             Where should we send your personalized mortgage analysis?
           </p>
@@ -54,50 +54,62 @@ const ContactStep: React.FC<ContactStepProps> = ({
           </div>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-labelledby="contact-step-title">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="block text-sm font-bold text-gray-900">
+              <label htmlFor="firstName" className="block text-sm font-bold text-gray-900">
                 First Name
               </label>
               <input
                 type="text"
+                id="firstName"
                 className="form-input"
                 value={formData.firstName}
                 onChange={(e) => onChange({ firstName: e.target.value })}
                 required
                 placeholder="Enter your first name"
+                aria-describedby="firstName-required"
+                aria-required="true"
               />
+              <span id="firstName-required" className="sr-only">Required field</span>
             </div>
             
             <div className="space-y-2">
-              <label className="block text-sm font-bold text-gray-900">
+              <label htmlFor="lastName" className="block text-sm font-bold text-gray-900">
                 Last Name
               </label>
               <input
                 type="text"
+                id="lastName"
                 className="form-input"
                 value={formData.lastName}
                 onChange={(e) => onChange({ lastName: e.target.value })}
                 required
                 placeholder="Enter your last name"
+                aria-describedby="lastName-required"
+                aria-required="true"
               />
+              <span id="lastName-required" className="sr-only">Required field</span>
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label htmlFor="email" className="block text-sm font-bold text-gray-900">
               Email Address
             </label>
             <input
               type="email"
+              id="email"
               className="form-input"
               value={formData.email}
               onChange={(e) => onChange({ email: e.target.value })}
               required
               placeholder="your.email@example.com"
+              aria-describedby="email-required email-help"
+              aria-required="true"
             />
-            <p className="text-xs text-gray-500 mt-1">
+            <span id="email-required" className="sr-only">Required field</span>
+            <p className="text-xs text-gray-500 mt-1" id="email-help">
               We'll send your personalized mortgage report here
             </p>
           </div>
@@ -122,6 +134,7 @@ const ContactStep: React.FC<ContactStepProps> = ({
               className="btn-secondary"
               onClick={onPrev}
               disabled={isSubmitting}
+              aria-label="Go back to previous step"
             >
               Back
             </button>
@@ -129,6 +142,7 @@ const ContactStep: React.FC<ContactStepProps> = ({
               type="submit"
               className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-3"
               disabled={!isValid || isSubmitting}
+              aria-label={isSubmitting ? "Processing your request" : "Submit form to get professional analysis"}
             >
               {isSubmitting ? (
                 <>

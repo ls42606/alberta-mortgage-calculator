@@ -20,7 +20,7 @@ export interface BlogSEO {
   keywords: string[];
   canonicalUrl: string;
   ogImage?: string;
-  structuredData?: any;
+  structuredData?: Record<string, unknown>;
 }
 
 export interface BlogAnalytics {

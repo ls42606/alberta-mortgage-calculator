@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Home, DollarSign, Percent, Calendar, Info, TrendingUp, Calculator, Award, Shield } from 'lucide-react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { Home, DollarSign, Percent, Calendar, TrendingUp, Calculator } from 'lucide-react';
 import CalculatorLayout from '../../components/CalculatorLayout';
 import SliderInput from '../../components/ui/SliderInput';
+import { AmortizationPayment } from '../../types/services';
 
-const MortgagePaymentCalculator: React.FC = () => {
+const MortgagePaymentCalculator: React.FC = React.memo(() => {
   const [purchasePrice, setPurchasePrice] = useState(500000);
   const [downPayment, setDownPayment] = useState(20);
   const [interestRate, setInterestRate] = useState(5.5);
@@ -21,19 +22,19 @@ const MortgagePaymentCalculator: React.FC = () => {
     downPaymentAmount: 0
   });
 
-  const [amortizationSchedule, setAmortizationSchedule] = useState<any[]>([]);
+  const [amortizationSchedule, setAmortizationSchedule] = useState<AmortizationPayment[]>([]);
 
   useEffect(() => {
     calculateMortgage();
-  }, [purchasePrice, downPayment, interestRate, amortization, paymentFrequency]);
+  }, [calculateMortgage]);
 
   useEffect(() => {
     if(results.loanAmount > 0) {
        generateAmortizationSchedule(results.loanAmount);
     }
-  }, [results]);
+  }, [results.loanAmount, generateAmortizationSchedule]);
 
-  const calculateMortgage = () => {
+  const calculateMortgage = useCallback(() => {
     const downPaymentAmount = purchasePrice * (downPayment / 100);
     const principalAmount = purchasePrice - downPaymentAmount;
     
@@ -102,9 +103,9 @@ const MortgagePaymentCalculator: React.FC = () => {
     });
 
     // Amortization schedule generation is now handled by the new useEffect hook
-  };
+  }, [purchasePrice, downPayment, interestRate, amortization, paymentFrequency]);
 
-  const generateAmortizationSchedule = (principal: number) => {
+  const generateAmortizationSchedule = useCallback((principal: number) => {
     const schedule = [];
     let balance = principal;
     
@@ -152,16 +153,18 @@ const MortgagePaymentCalculator: React.FC = () => {
     }
     
     setAmortizationSchedule(schedule);
-  };
+  }, [interestRate, paymentFrequency, results.monthlyPayment, results.biWeeklyPayment, results.weeklyPayment]);
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-CA', {
+  // Memoize formatter to avoid recreating it on every render
+  const formatCurrency = useMemo(() => {
+    const formatter = new Intl.NumberFormat('en-CA', {
       style: 'currency',
       currency: 'CAD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(amount);
-  };
+    });
+    return (amount: number) => formatter.format(amount);
+  }, []);
 
   return (
     <CalculatorLayout
@@ -342,6 +345,8 @@ const MortgagePaymentCalculator: React.FC = () => {
       </div>
     </CalculatorLayout>
   );
-};
+});
+
+MortgagePaymentCalculator.displayName = 'MortgagePaymentCalculator';
 
 export default MortgagePaymentCalculator;

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { DollarSign, Users, CreditCard, Home, Percent, Calendar, AlertTriangle } from 'lucide-react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { DollarSign, Users, CreditCard, Home, Percent, Calendar } from 'lucide-react';
 import CalculatorLayout from '../../components/CalculatorLayout';
 import SliderInput from '../../components/ui/SliderInput';
 
-const AffordabilityCalculator: React.FC = () => {
+const AffordabilityCalculator: React.FC = React.memo(() => {
   const [annualIncome, setAnnualIncome] = useState(85000);
   const [monthlyDebts, setMonthlyDebts] = useState(500);
   const [downPayment, setDownPayment] = useState(50000);
@@ -157,14 +157,16 @@ const AffordabilityCalculator: React.FC = () => {
     calculateAffordability();
   }, [calculateAffordability]);
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-CA', {
+  // Memoize formatter to avoid recreating it on every render
+  const formatCurrency = useMemo(() => {
+    const formatter = new Intl.NumberFormat('en-CA', {
       style: 'currency',
       currency: 'CAD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(amount);
-  };
+    });
+    return (amount: number) => formatter.format(amount);
+  }, []);
 
   return (
     <CalculatorLayout
@@ -316,20 +318,20 @@ const AffordabilityCalculator: React.FC = () => {
           </div>
 
           {/* Debt Service Ratios */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-lg">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-6">Debt Service Ratios</h3>
+          <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-6 lg:p-8 shadow-lg">
+            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Debt Service Ratios</h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-semibold text-gray-700">GDS Ratio</span>
-                  <span className={`font-bold ${results.gdsRatio <= (downPayment / results.maxPurchasePrice >= 0.2 ? 45 : 39) ? 'text-emerald-600' : 'text-red-600'}`}>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-1 sm:gap-0">
+                  <span className="font-semibold text-gray-700 text-sm sm:text-base">GDS Ratio</span>
+                  <span className={`font-bold text-sm sm:text-base ${results.gdsRatio <= (downPayment / results.maxPurchasePrice >= 0.2 ? 45 : 39) ? 'text-emerald-600' : 'text-red-600'}`}>
                     {results.gdsRatio}%
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="w-full bg-gray-200 rounded-full h-3 sm:h-4">
                   <div 
-                    className={`h-3 rounded-full transition-all duration-500 ${
+                    className={`h-3 sm:h-4 rounded-full transition-all duration-500 ${
                       results.gdsRatio <= (downPayment / results.maxPurchasePrice >= 0.2 ? 45 : 39) ? 'bg-emerald-500' : 'bg-red-500'
                     }`}
                     style={{ width: `${Math.min(results.gdsRatio / (downPayment / results.maxPurchasePrice >= 0.2 ? 45 : 39) * 100, 100)}%` }}
@@ -339,15 +341,15 @@ const AffordabilityCalculator: React.FC = () => {
               </div>
 
               <div>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-semibold text-gray-700">TDS Ratio</span>
-                  <span className={`font-bold ${results.tdsRatio <= (downPayment / results.maxPurchasePrice >= 0.2 ? 50 : 44) ? 'text-emerald-600' : 'text-red-600'}`}>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-1 sm:gap-0">
+                  <span className="font-semibold text-gray-700 text-sm sm:text-base">TDS Ratio</span>
+                  <span className={`font-bold text-sm sm:text-base ${results.tdsRatio <= (downPayment / results.maxPurchasePrice >= 0.2 ? 50 : 44) ? 'text-emerald-600' : 'text-red-600'}`}>
                     {results.tdsRatio}%
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="w-full bg-gray-200 rounded-full h-3 sm:h-4">
                   <div 
-                    className={`h-3 rounded-full transition-all duration-500 ${
+                    className={`h-3 sm:h-4 rounded-full transition-all duration-500 ${
                       results.tdsRatio <= (downPayment / results.maxPurchasePrice >= 0.2 ? 50 : 44) ? 'bg-emerald-500' : 'bg-red-500'
                     }`}
                     style={{ width: `${Math.min(results.tdsRatio / (downPayment / results.maxPurchasePrice >= 0.2 ? 50 : 44) * 100, 100)}%` }}
@@ -424,6 +426,8 @@ const AffordabilityCalculator: React.FC = () => {
       </div>
     </CalculatorLayout>
   );
-};
+});
+
+AffordabilityCalculator.displayName = 'AffordabilityCalculator';
 
 export default AffordabilityCalculator;

@@ -1,4 +1,5 @@
 import { BlogPost, BlogCategory, BlogMetadata } from '../types/blog';
+import { ClaudeResponse, SEOAnalysisResult } from '../types/services';
 
 export class BlogService {
   private static instance: BlogService;
@@ -76,13 +77,7 @@ export class BlogService {
     return newPosts;
   }
 
-  private async callClaudeMCP(prompt: string, retryCount = 0): Promise<{
-    title: string;
-    content: string;
-    excerpt: string;
-    seoTitle: string;
-    metaDescription: string;
-  }> {
+  private async callClaudeMCP(prompt: string, retryCount = 0): Promise<ClaudeResponse> {
     const maxRetries = 3;
     const retryDelay = 1000 * Math.pow(2, retryCount); // Exponential backoff
     
@@ -296,7 +291,6 @@ This test content demonstrates the blog generation structure while the Claude AP
   async scheduleBlogPost(post: BlogPost, publishDate: Date): Promise<void> {
     post.publishDate = publishDate;
     // In a real implementation, this would integrate with a scheduling system
-    console.log(`Scheduled post "${post.title}" for ${publishDate.toISOString()}`);
   }
 
   async optimizeForSEO(post: BlogPost): Promise<BlogPost> {
@@ -321,11 +315,7 @@ This test content demonstrates the blog generation structure while the Claude AP
     return optimized;
   }
 
-  private async analyzeSEO(content: string): Promise<{
-    titleSuggestion?: string;
-    metaDescriptionSuggestion?: string;
-    keywordSuggestions?: string[];
-  }> {
+  private async analyzeSEO(content: string): Promise<SEOAnalysisResult> {
     // This would use Claude MCP for SEO analysis
     return {
       titleSuggestion: 'SEO Optimized Title',
