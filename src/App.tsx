@@ -27,6 +27,7 @@ const CalgaryMortgageGuide = lazy(() => import('./pages/blog/calgary-mortgage-ca
 const EdmontonMortgageGuide = lazy(() => import('./pages/blog/edmonton-mortgage-calculator-guide-2025'));
 const AffordabilityCalculatorGuide = lazy(() => import('./pages/blog/affordability-calculator-explained-guide'));
 const StressTestCalculatorGuide = lazy(() => import('./pages/blog/stress-test-calculator-guide-2025'));
+const MortgageMythsDebunked = lazy(() => import('./pages/blog/mortgage-myths-debunked-2025'));
 
 // Lazy-loaded Other Pages
 const Contact = lazy(() => import('./pages/Contact'));
@@ -187,6 +188,14 @@ const AppRoutes: React.FC = () => {
         element={
           <Suspense fallback={<LoadingSpinner size="lg" message="Loading Stress Test Guide..." />}>
             <StressTestCalculatorGuide />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/resources/mortgage-myths-debunked-2025" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Mortgage Myths Guide..." />}>
+            <MortgageMythsDebunked />
           </Suspense>
         } 
       />

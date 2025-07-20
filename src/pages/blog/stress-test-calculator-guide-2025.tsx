@@ -1,318 +1,261 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Calculator, Shield, CheckCircle, TrendingUp, Users } from 'lucide-react';
-import LeadCaptureForm from '../../components/LeadCaptureForm';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import { Link } from 'react-router-dom';
+import ContentLayout from '../../components/ContentLayout';
 
 const StressTestCalculatorGuide: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Pass the Mortgage Stress Test: Guaranteed Qualification Strategies</title>
+        <title>Mortgage Stress Test Calculator Guide | Alberta Mortgage Calculator</title>
         <meta 
           name="description" 
-          content="Beat the mortgage stress test with our calculator and proven strategies. 95% pass rate for our clients. Free stress test analysis + qualification tips." 
+          content="Professional guide to the federal mortgage stress test. Understand qualification requirements, calculation methods, and strategies for meeting stress test standards." 
         />
-        <meta name="keywords" content="mortgage stress test, qualify for mortgage, stress test calculator, pass stress test Alberta" />
+        <meta name="keywords" content="mortgage stress test, stress test calculator, mortgage qualification Canada, federal stress test" />
         <link rel="canonical" href="https://albertamortgagecalculator.ca/resources/mortgage-stress-test-pass-guaranteed" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-100">
-        <Header />
-        <div className="pt-20 sm:pt-24">
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Mortgage Stress Test Calculator Guide
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Understanding the federal mortgage stress test requirements. Professional guidance on qualification strategies and calculations.
+      <ContentLayout
+        title="Mortgage Stress Test Calculator Guide"
+        description="Professional guide to understanding the federal mortgage stress test. Learn about qualification requirements, calculation methods, and strategies for meeting stress test standards."
+        category="Mortgage Qualification"
+        backLink="/blog"
+        backText="Back to Resources"
+      >
+        {/* Understanding the Stress Test */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Understanding the Federal Stress Test</h2>
+          
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+            <h3 className="text-xl font-semibold text-blue-900 mb-3">Professional Stress Test Calculator</h3>
+            <p className="text-blue-800 mb-4">
+              Calculate your qualification at federal stress test rates using current Bank of Canada guidelines.
             </p>
-            <div className="bg-blue-100 border border-blue-400 rounded-lg p-4 max-w-2xl mx-auto mb-6">
-              <p className="text-blue-800 font-semibold flex items-center justify-center gap-2">
-                <Users className="w-5 h-5" />
-                Professional stress test calculations trusted by Alberta mortgage professionals
+            <Link 
+              to="/calculators/stress-test" 
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Use Stress Test Calculator
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">What is the Stress Test?</h3>
+              <p className="text-gray-700 mb-4">
+                The federal mortgage stress test ensures borrowers can afford their mortgage payments if interest rates increase. 
+                All applicants must qualify at a higher rate than their contract rate.
+              </p>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Implemented in 2018 for financial stability</li>
+                <li>• Applies to all insured and uninsured mortgages</li>
+                <li>• Required by federally regulated lenders</li>
+                <li>• Updated regularly by federal regulators</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Current Qualifying Rate</h3>
+              <div className="bg-gray-50 p-6 rounded-lg">
+                <div className="text-center mb-4">
+                  <div className="text-3xl font-bold text-blue-600">7.00%</div>
+                  <div className="text-gray-600">Bank of Canada Qualifying Rate</div>
+                  <div className="text-sm text-gray-500 mt-1">Updated weekly</div>
+                </div>
+                <p className="text-gray-700 text-sm">
+                  Qualification rate is the higher of the Bank of Canada 5-year benchmark rate or your contract rate plus 2%.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Debt Service Ratios */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Canadian Debt Service Standards</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center p-6 bg-gray-50 rounded-lg">
+              <div className="text-3xl font-bold text-blue-600 mb-2">32%</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">GDS Maximum</div>
+              <div className="text-sm text-gray-600">Gross Debt Service Ratio for housing costs</div>
+            </div>
+            <div className="text-center p-6 bg-gray-50 rounded-lg">
+              <div className="text-3xl font-bold text-green-600 mb-2">40%</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">TDS Maximum</div>
+              <div className="text-sm text-gray-600">Total Debt Service Ratio for all debt</div>
+            </div>
+            <div className="text-center p-6 bg-gray-50 rounded-lg">
+              <div className="text-3xl font-bold text-purple-600 mb-2">7%+</div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">Stress Test Rate</div>
+              <div className="text-sm text-gray-600">Federal qualifying rate requirement</div>
+            </div>
+          </div>
+        </section>
+
+        {/* Qualification Examples */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Stress Test Qualification Examples</h2>
+          
+          <div className="space-y-6">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Example: $90,000 Annual Income</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">At Contract Rate (5.5%)</h4>
+                  <ul className="space-y-1 text-gray-700">
+                    <li>• Maximum mortgage: $420,000</li>
+                    <li>• Monthly payment: $2,450</li>
+                    <li>• Home price: ~$465,000</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">At Stress Test Rate (7.0%)</h4>
+                  <ul className="space-y-1 text-gray-700">
+                    <li>• Maximum mortgage: $365,000</li>
+                    <li>• Qualifying payment: $2,450</li>
+                    <li>• Home price: ~$410,000</li>
+                  </ul>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 mt-4">
+                *Based on 5% down payment, minimal other debt, and standard property costs
               </p>
             </div>
           </div>
+        </section>
 
-          {/* What is the Stress Test */}
-          <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <Shield className="w-8 h-8 text-red-600" />
-              What is the Stress Test? (Simplified)
-            </h2>
+        {/* Qualification Strategies */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Stress Test Qualification Strategies</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Improve Debt-to-Income Ratio</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Pay Down High-Interest Debt:</strong>
+                    <p className="text-gray-700 text-sm">Every $100 monthly debt payment reduces buying power by ~$20,000</p>
+                  </div>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Increase Down Payment:</strong>
+                    <p className="text-gray-700 text-sm">Larger down payment reduces mortgage amount and improves qualification</p>
+                  </div>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Consider Co-Signers:</strong>
+                    <p className="text-gray-700 text-sm">Additional qualified borrower can significantly improve qualification</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-red-600 mb-4">Current Qualifying Rate</h3>
-                <div className="bg-red-50 p-6 rounded-lg border border-red-200">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-red-700">6.99%</p>
-                    <p className="text-red-600">Bank of Canada Qualifying Rate</p>
-                    <p className="text-sm text-red-500 mt-2">Updated weekly - Last update: January 15, 2025</p>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Documentation Preparation</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Income Verification:</strong>
+                    <p className="text-gray-700 text-sm">Two years of consistent income history preferred</p>
                   </div>
-                </div>
-                <p className="text-gray-600 mt-4">
-                  You must qualify at this rate even if your actual mortgage rate is lower. This ensures you can still afford payments if rates rise.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-4">How Banks Calculate Your Limit</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 rounded">
-                    <CheckCircle className="w-5 h-5 text-blue-500" />
-                    <span><strong>GDS Ratio:</strong> Housing costs ≤ 32% of income</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Credit Score Optimization:</strong>
+                    <p className="text-gray-700 text-sm">Score of 650+ required, 700+ for best rates</p>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 rounded">
-                    <CheckCircle className="w-5 h-5 text-blue-500" />
-                    <span><strong>TDS Ratio:</strong> Total debt ≤ 40% of income</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Financial Stability:</strong>
+                    <p className="text-gray-700 text-sm">Stable employment and minimal recent credit inquiries</p>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 rounded">
-                    <CheckCircle className="w-5 h-5 text-blue-500" />
-                    <span><strong>Stress Test:</strong> Qualify at 6.99% rate</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 rounded">
-                    <CheckCircle className="w-5 h-5 text-blue-500" />
-                    <span><strong>Credit Score:</strong> Minimum 650 (ideally 700+)</span>
-                  </div>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Stress Test Calculator */}
-          <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <Calculator className="w-8 h-8 text-red-600" />
-              Stress Test Calculator
-            </h2>
-            
-            <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 rounded-lg mb-8">
-              <h3 className="text-2xl font-bold mb-4">Professional Stress Test Calculator</h3>
-              <p className="text-lg mb-4">
-                Calculate your qualification at federal stress test rates. Professional tool using current Bank of Canada guidelines.
-              </p>
-              <a 
-                href="/calculators/stress-test" 
-                className="inline-block bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-              >
-                Check If I Pass the Stress Test →
-              </a>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Maximum Mortgage Amount</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$70,000 income:</span>
-                    <span className="font-semibold text-green-600">$315,000 max</span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$90,000 income:</span>
-                    <span className="font-semibold text-green-600">$405,000 max</span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$120,000 income:</span>
-                    <span className="font-semibold text-green-600">$540,000 max</span>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-600 mt-4">
-                  *Assumes 5% down payment, no other debts, 25-year amortization
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Required Income Calculator</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$400,000 home:</span>
-                    <span className="font-semibold text-blue-600">$89,000 income needed</span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$500,000 home:</span>
-                    <span className="font-semibold text-blue-600">$111,000 income needed</span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$600,000 home:</span>
-                    <span className="font-semibold text-blue-600">$133,000 income needed</span>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-600 mt-4">
-                  *Based on current 6.99% qualifying rate
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Strategies to Pass */}
-          <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Strategies to Pass the Stress Test</h2>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-green-600 mb-4">Increase Your Income (Quick Wins)</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <TrendingUp className="w-5 h-5 text-green-500 mt-1" />
-                    <div>
-                      <strong>Add co-borrower income</strong>
-                      <p className="text-gray-600 text-sm">Spouse, partner, or family member can dramatically increase buying power</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <TrendingUp className="w-5 h-5 text-green-500 mt-1" />
-                    <div>
-                      <strong>Include bonus/commission income</strong>
-                      <p className="text-gray-600 text-sm">2-year average of variable income counts toward qualification</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <TrendingUp className="w-5 h-5 text-green-500 mt-1" />
-                    <div>
-                      <strong>Side hustle income</strong>
-                      <p className="text-gray-600 text-sm">Uber, consulting, rental income can all help (need 2-year history)</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <TrendingUp className="w-5 h-5 text-green-500 mt-1" />
-                    <div>
-                      <strong>Ask for a raise</strong>
-                      <p className="text-gray-600 text-sm">Even $5,000 salary increase = $22,000 more buying power</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-4">Reduce Your Debts</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 mt-1" />
-                    <div>
-                      <strong>Pay off credit cards</strong>
-                      <p className="text-gray-600 text-sm">Every $100/month payment = $20,000+ more buying power</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 mt-1" />
-                    <div>
-                      <strong>Pay down car loans</strong>
-                      <p className="text-gray-600 text-sm">Consider paying off car loan with RRSP withdrawal</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 mt-1" />
-                    <div>
-                      <strong>Consolidate high-interest debt</strong>
-                      <p className="text-gray-600 text-sm">Line of credit at 7% vs credit cards at 19%</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-500 mt-1" />
-                    <div>
-                      <strong>Cancel unused credit cards</strong>
-                      <p className="text-gray-600 text-sm">High limits count against you even if balance is $0</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* Stress Test Workarounds */}
-          <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Stress Test Workarounds (100% Legal)</h2>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
-                <h3 className="text-lg font-semibold text-yellow-800 mb-4">Credit Union Options</h3>
-                <ul className="space-y-2 text-sm text-yellow-700">
-                  <li>• No stress test required</li>
-                  <li>• Local Alberta credit unions</li>
-                  <li>• Higher rates but easier qualification</li>
-                  <li>• Can refinance to bank later</li>
-                </ul>
-                <div className="mt-4 p-3 bg-yellow-100 rounded">
-                  <p className="font-semibold text-yellow-800">Rate: ~6.5-7.2%</p>
-                </div>
-              </div>
-              
-              <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
-                <h3 className="text-lg font-semibold text-purple-800 mb-4">Private Lender Programs</h3>
-                <ul className="space-y-2 text-sm text-purple-700">
-                  <li>• Asset-based lending</li>
-                  <li>• Stated income programs</li>
-                  <li>• Self-employed friendly</li>
-                  <li>• Bridge to bank financing</li>
-                </ul>
-                <div className="mt-4 p-3 bg-purple-100 rounded">
-                  <p className="font-semibold text-purple-800">Rate: ~7.5-9.5%</p>
-                </div>
-              </div>
-              
-              <div className="bg-green-50 p-6 rounded-lg border border-green-200">
-                <h3 className="text-lg font-semibold text-green-800 mb-4">Rent-to-Own Strategies</h3>
-                <ul className="space-y-2 text-sm text-green-700">
-                  <li>• Build equity while renting</li>
-                  <li>• Improve credit over time</li>
-                  <li>• Lock in purchase price</li>
-                  <li>• 2-3 year programs available</li>
-                </ul>
-                <div className="mt-4 p-3 bg-green-100 rounded">
-                  <p className="font-semibold text-green-800">Option fee: 3-5%</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Anxiety Relief */}
-          <section className="bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-xl p-8 mb-8">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold mb-4">Stress Test Qualification Options</h2>
-              <div className="grid md:grid-cols-3 gap-6 mt-8">
-                <div className="text-center">
-                  <div className="text-4xl font-bold">GDS</div>
-                  <div className="text-lg">32% Maximum Ratio</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold">TDS</div>
-                  <div className="text-lg">40% Maximum Ratio</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold">7%+</div>
-                  <div className="text-lg">Stress Test Rate</div>
-                </div>
-              </div>
-              <p className="text-xl mt-6">
-                Understanding qualification requirements helps you prepare your mortgage application and explore appropriate lending options.
+        {/* Alternative Options */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Alternative Lending Options</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-yellow-50 border border-yellow-200 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold text-yellow-900 mb-3">Credit Union Mortgages</h3>
+              <ul className="space-y-2 text-yellow-800 text-sm">
+                <li>• May have different stress test requirements</li>
+                <li>• Local lending criteria</li>
+                <li>• Competitive rates for members</li>
+              </ul>
+              <p className="text-yellow-700 text-sm mt-3">
+                Rate range: 6.5% - 7.2%
               </p>
             </div>
-          </section>
-
-          {/* Lead Capture Form */}
-          <section className="bg-gradient-to-r from-red-600 to-orange-700 text-white rounded-xl p-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Get Your Stress Test Analysis + Pre-Approval</h2>
-              <p className="text-xl mb-6">
-                Professional stress test analysis includes qualification review, preparation strategies, and lending option guidance.
+            
+            <div className="bg-purple-50 border border-purple-200 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold text-purple-900 mb-3">Private Lenders</h3>
+              <ul className="space-y-2 text-purple-800 text-sm">
+                <li>• Asset-based lending programs</li>
+                <li>• Stated income options</li>
+                <li>• Flexible qualification criteria</li>
+              </ul>
+              <p className="text-purple-700 text-sm mt-3">
+                Rate range: 7.5% - 9.5%
               </p>
-              <div className="flex items-center justify-center gap-6 text-sm">
-                <span>✓ No credit check required</span>
-                <span>✓ Same-day results</span>
-                <span>✓ Multiple lender options</span>
-              </div>
             </div>
-            <LeadCaptureForm />
-          </section>
-        </div>
-        </div>
-        <Footer />
-      </div>
+            
+            <div className="bg-green-50 border border-green-200 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold text-green-900 mb-3">Alternative Programs</h3>
+              <ul className="space-y-2 text-green-800 text-sm">
+                <li>• Rent-to-own arrangements</li>
+                <li>• Vendor take-back mortgages</li>
+                <li>• Joint venture options</li>
+              </ul>
+              <p className="text-green-700 text-sm mt-3">
+                Terms vary by program
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Professional Guidance */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Professional Mortgage Guidance</h2>
+          
+          <div className="bg-gray-50 rounded-lg p-6">
+            <p className="text-gray-700 mb-4">
+              The federal stress test serves as a financial safeguard, ensuring sustainable homeownership even if interest rates increase. 
+              While it may reduce purchasing power, it protects borrowers from overextending financially.
+            </p>
+            <p className="text-gray-700 mb-6">
+              Professional mortgage advisors can help you understand stress test requirements, improve your qualification, and explore appropriate lending options.
+            </p>
+            
+            <div className="border-t border-gray-200 pt-6">
+              <h4 className="font-semibold text-gray-900 mb-3">Planning Your Application</h4>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Calculate affordability using stress test rates</li>
+                <li>• Build emergency funds beyond down payment</li>
+                <li>• Maintain stable employment history</li>
+                <li>• Consult with qualified mortgage professionals</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </ContentLayout>
     </>
   );
 };

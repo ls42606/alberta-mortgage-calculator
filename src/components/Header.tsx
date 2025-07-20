@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, BookOpen } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { NavigationLink } from '../types/services';
+import { Link, useLocation } from 'react-router-dom';
 
 // Legacy interface - keeping for potential future use
 // interface HeaderNavItem extends NavigationLink {

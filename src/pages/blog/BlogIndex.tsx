@@ -8,6 +8,15 @@ const BlogIndex: React.FC = () => {
   const articles = [
     {
       id: 1,
+      title: 'Mortgage Myths Debunked',
+      excerpt: 'Professional analysis of common mortgage misconceptions. Get accurate, current information about Canadian mortgage qualification and government programs.',
+      date: '2025-01-20',
+      readTime: '12 min read',
+      slug: '/resources/mortgage-myths-debunked-2025',
+      category: 'Education'
+    },
+    {
+      id: 2,
       title: 'How Much Mortgage Can I Afford in Alberta',
       excerpt: 'Calculate your maximum mortgage amount using Canadian GDS and TDS ratios, including the stress test requirements.',
       date: '2024-07-10',
@@ -16,7 +25,7 @@ const BlogIndex: React.FC = () => {
       category: 'Affordability'
     },
     {
-      id: 2,
+      id: 3,
       title: 'First Time Home Buyer Guide Alberta 2024',
       excerpt: 'Complete guide to home buying programs, down payment requirements, and qualification steps for Alberta first-time buyers.',
       date: '2024-07-08',
@@ -25,7 +34,7 @@ const BlogIndex: React.FC = () => {
       category: 'First-Time Buyers'
     },
     {
-      id: 3,
+      id: 4,
       title: 'Understanding the Mortgage Stress Test',
       excerpt: 'How the federal stress test works, qualification rates, and strategies to meet the requirements.',
       date: '2024-07-05',
@@ -34,7 +43,7 @@ const BlogIndex: React.FC = () => {
       category: 'Qualification'
     },
     {
-      id: 4,
+      id: 5,
       title: 'Fixed vs Variable Rate Mortgages',
       excerpt: 'Compare fixed and variable rate mortgages, understanding rate structures and making the right choice.',
       date: '2024-07-03',
@@ -43,7 +52,7 @@ const BlogIndex: React.FC = () => {
       category: 'Mortgage Types'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Mortgage Renewal vs Refinancing',
       excerpt: 'Understanding the differences between renewal and refinancing, when to consider each option.',
       date: '2024-07-01',

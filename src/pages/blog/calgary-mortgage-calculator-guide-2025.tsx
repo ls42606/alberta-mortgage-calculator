@@ -1,282 +1,223 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Calculator, TrendingUp, MapPin, DollarSign, Home, Users } from 'lucide-react';
-import LeadCaptureForm from '../../components/LeadCaptureForm';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import { Link } from 'react-router-dom';
+import ContentLayout from '../../components/ContentLayout';
 
 const CalgaryMortgageGuide: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Calgary Mortgage Calculator: Complete 2025 Home Buying Guide</title>
+        <title>Calgary Mortgage Calculator Guide | Alberta Mortgage Calculator</title>
         <meta 
           name="description" 
-          content="Use our Calgary mortgage calculator to find your perfect home payment. Get current rates, market insights, and pre-approval in minutes. Free tools + expert guidance." 
+          content="Professional mortgage calculation guide for Calgary homebuyers. Understand qualification requirements, market factors, and lending standards for Calgary real estate." 
         />
-        <meta name="keywords" content="Calgary mortgage calculator, Calgary home prices, Calgary mortgage rates, Calgary real estate 2025" />
+        <meta name="keywords" content="Calgary mortgage calculator, Calgary home prices, Calgary mortgage rates, Calgary real estate mortgage" />
         <link rel="canonical" href="https://albertamortgagecalculator.ca/resources/calgary-mortgage-calculator-guide-2025" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-        <Header />
-        {/* Fixed header spacing for mobile */}
-        <div className="pt-20 sm:pt-24">
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Calgary Mortgage Calculator Guide
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Professional mortgage calculations for Calgary homebuyers. Accurate estimates using Canadian lending standards and Calgary market data.
-            </p>
-            <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
-              <div className="flex items-center gap-1">
-                <Users className="w-4 h-4" />
-                <span>Professional mortgage tools</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <TrendingUp className="w-4 h-4" />
-                <span>Current market rates</span>
-              </div>
+      <ContentLayout
+        title="Calgary Mortgage Calculator Guide"
+        description="Professional mortgage calculation guide for Calgary homebuyers. Understand qualification requirements, market factors, and lending standards specific to Calgary real estate."
+        category="Calgary Market"
+        backLink="/blog"
+        backText="Back to Resources"
+      >
+        {/* Market Overview */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Calgary Market Overview</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Average Home Prices</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>Detached: $580,000 - $620,000</li>
+                <li>Semi-Detached: $440,000 - $480,000</li>
+                <li>Townhouse: $380,000 - $420,000</li>
+                <li>Apartment: $280,000 - $320,000</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3">
+                *Prices vary by neighborhood and property condition
+              </p>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Current Mortgage Rates</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>Fixed 5-Year: 5.84% - 6.24%</li>
+                <li>Variable Rate: 6.20% - 6.70%</li>
+                <li>Insured Rates: 5.59% - 5.89%</li>
+                <li>First-Time Buyer: 5.69% - 6.09%</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3">
+                *Rates subject to qualification and market conditions
+              </p>
+            </div>
+            
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Market Characteristics</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li>Property Tax: 0.6% - 1.1% annually</li>
+                <li>Heating Costs: $150 - $250/month</li>
+                <li>Condo Fees: $250 - $450/month</li>
+                <li>No Provincial Sales Tax</li>
+              </ul>
+              <p className="text-sm text-gray-600 mt-3">
+                *Costs vary by property type and location
+              </p>
             </div>
           </div>
+        </section>
 
-          {/* Current Calgary Market Overview */}
-          <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <MapPin className="w-8 h-8 text-blue-600" />
-              Calgary Market Reference Data
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-green-50 p-6 rounded-lg border border-green-200">
-                <h3 className="text-xl font-semibold text-green-800 mb-2">Average Home Prices by Type</h3>
-                <ul className="space-y-2 text-green-700">
-                  <li>• Detached Home: $587,500</li>
-                  <li>• Semi-Detached: $445,200</li>
-                  <li>• Townhouse: $385,900</li>
-                  <li>• Apartment: $285,400</li>
-                </ul>
-              </div>
-              
-              <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
-                <h3 className="text-xl font-semibold text-blue-800 mb-2">Best Mortgage Rates in Calgary</h3>
-                <ul className="space-y-2 text-blue-700">
-                  <li>• Fixed 5-Year: 5.89%</li>
-                  <li>• Variable Rate: 6.45%</li>
-                  <li>• First-Time Buyer: 5.69%</li>
-                  <li>• Insured Mortgage: 5.59%</li>
-                </ul>
-              </div>
-              
-              <div className="bg-orange-50 p-6 rounded-lg border border-orange-200">
-                <h3 className="text-xl font-semibold text-orange-800 mb-2">Market Trends Q4 2024</h3>
-                <ul className="space-y-2 text-orange-700">
-                  <li>• Sales Volume: +12.5%</li>
-                  <li>• Average Days on Market: 23</li>
-                  <li>• Price Growth: +8.3%</li>
-                  <li>• Inventory Levels: Balanced</li>
-                </ul>
-              </div>
-            </div>
+        {/* Mortgage Calculator */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Calgary Mortgage Calculator</h2>
+          
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+            <h3 className="text-xl font-semibold text-blue-900 mb-3">Professional Mortgage Calculations</h3>
+            <p className="text-blue-800 mb-4">
+              Calculate your Calgary home affordability using Canadian lending standards and local market factors.
+            </p>
+            <Link 
+              to="/calculators/affordability" 
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Calculate Affordability
+            </Link>
+          </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <p className="text-blue-800 font-semibold">
-                Understanding Calgary's mortgage qualification requirements helps you prepare for the home buying process and determine realistic price ranges.
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Affordability Examples</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between p-3 bg-gray-50 rounded">
+                  <span className="text-gray-700">$80,000 household income:</span>
+                  <span className="font-semibold text-gray-900">~$375,000 home</span>
+                </div>
+                <div className="flex justify-between p-3 bg-gray-50 rounded">
+                  <span className="text-gray-700">$100,000 household income:</span>
+                  <span className="font-semibold text-gray-900">~$475,000 home</span>
+                </div>
+                <div className="flex justify-between p-3 bg-gray-50 rounded">
+                  <span className="text-gray-700">$120,000 household income:</span>
+                  <span className="font-semibold text-gray-900">~$570,000 home</span>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 mt-4">
+                *Based on 5% down payment, current rates, and standard debt ratios
               </p>
             </div>
-          </section>
-
-          {/* Interactive Calculator Section */}
-          <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <Calculator className="w-8 h-8 text-blue-600" />
-              How Much House Can You Afford in Calgary?
-            </h2>
             
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-lg mb-6">
-              <h3 className="text-2xl font-bold mb-4">Calgary Mortgage Calculator</h3>
-              <p className="text-lg mb-4">
-                Professional mortgage calculations using current qualification rates and Canadian lending standards. Trusted by Alberta homebuyers.
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Calgary Neighborhoods</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between p-3 bg-gray-50 rounded">
+                  <span className="text-gray-700">Kensington:</span>
+                  <span className="font-semibold text-gray-900">$650K - $950K</span>
+                </div>
+                <div className="flex justify-between p-3 bg-gray-50 rounded">
+                  <span className="text-gray-700">Marda Loop:</span>
+                  <span className="font-semibold text-gray-900">$550K - $750K</span>
+                </div>
+                <div className="flex justify-between p-3 bg-gray-50 rounded">
+                  <span className="text-gray-700">Airdrie:</span>
+                  <span className="font-semibold text-gray-900">$425K - $625K</span>
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 mt-4">
+                *Price ranges based on recent market activity
               </p>
-              <a 
-                href="/calculators/affordability" 
-                className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-              >
-                Calculate My Calgary Home Budget →
-              </a>
             </div>
+          </div>
+        </section>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Quick Affordability Estimates</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$80,000 income:</span>
-                    <span className="font-semibold text-green-600">~$375,000 home</span>
+        {/* First-Time Buyers */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">First-Time Buyer Information</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Government Programs</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">First-Time Home Buyer Incentive:</strong>
+                    <p className="text-gray-700 text-sm">Program discontinued for new applications as of March 2024</p>
                   </div>
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$100,000 income:</span>
-                    <span className="font-semibold text-green-600">~$475,000 home</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">RRSP Home Buyers' Plan:</strong>
+                    <p className="text-gray-700 text-sm">Withdraw up to $35,000 tax-free per person</p>
                   </div>
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>$120,000 income:</span>
-                    <span className="font-semibold text-green-600">~$570,000 home</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Calgary Housing Programs:</strong>
+                    <p className="text-gray-700 text-sm">Municipal down payment assistance programs</p>
                   </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Calgary Neighborhood Price Ranges</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>Kensington:</span>
-                    <span className="font-semibold">$650K - $950K</span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>Marda Loop:</span>
-                    <span className="font-semibold">$550K - $750K</span>
-                  </div>
-                  <div className="flex justify-between p-3 bg-gray-50 rounded">
-                    <span>Airdrie:</span>
-                    <span className="font-semibold">$425K - $625K</span>
-                  </div>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
-          </section>
-
-          {/* Calgary First-Time Buyer Programs */}
-          <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <Home className="w-8 h-8 text-blue-600" />
-              Calgary First-Time Buyer Programs
-            </h2>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-green-600 mb-4">Government Incentives Available</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold">💰</span>
-                    <div>
-                      <strong>First-Time Home Buyer Incentive:</strong> Up to 10% of home price shared equity loan
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold">🏦</span>
-                    <div>
-                      <strong>RRSP Home Buyers' Plan:</strong> Withdraw up to $35,000 tax-free
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold">🎯</span>
-                    <div>
-                      <strong>Calgary Housing Programs:</strong> Down payment assistance up to $30,000
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-4">Down Payment Assistance Programs</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 font-bold">🏡</span>
-                    <div>
-                      <strong>Calgary Attainable Housing:</strong> Shared equity program for qualified buyers
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 font-bold">⭐</span>
-                    <div>
-                      <strong>Employer Programs:</strong> Many Calgary employers offer housing assistance
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 font-bold">📋</span>
-                    <div>
-                      <strong>Credit Union Programs:</strong> Special rates and down payment help available
-                    </div>
-                  </li>
-                </ul>
-              </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Qualification Requirements</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Minimum Down Payment:</strong>
+                    <p className="text-gray-700 text-sm">5% for homes under $500K, higher for expensive homes</p>
+                  </div>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Credit Score:</strong>
+                    <p className="text-gray-700 text-sm">Minimum 650 for most lenders, 700+ for best rates</p>
+                  </div>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-gray-900">Income Documentation:</strong>
+                    <p className="text-gray-700 text-sm">Recent pay stubs, T4s, and Notice of Assessment</p>
+                  </div>
+                </li>
+              </ul>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Calgary Neighborhood Analysis */}
-          <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Calgary Neighborhood Price Analysis</h2>
+        {/* Professional Guidance */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Professional Mortgage Guidance</h2>
+          
+          <div className="bg-gray-50 rounded-lg p-6">
+            <p className="text-gray-700 mb-4">
+              Mortgage qualification involves numerous factors specific to your financial situation and the Calgary market. 
+              Professional mortgage advisors can help you navigate lending options, qualification requirements, and current market conditions.
+            </p>
+            <p className="text-gray-700 mb-6">
+              Consider consulting with licensed mortgage professionals who understand Alberta regulations and have access to multiple lender options.
+            </p>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-green-600 mb-4">Top 10 Family-Friendly Areas</h3>
-                <div className="space-y-4">
-                  {[
-                    { area: "Auburn Bay", price: "$515K", family: "⭐⭐⭐⭐⭐" },
-                    { area: "Cranston", price: "$485K", family: "⭐⭐⭐⭐⭐" },
-                    { area: "Silverado", price: "$525K", family: "⭐⭐⭐⭐⭐" },
-                    { area: "McKenzie Towne", price: "$475K", family: "⭐⭐⭐⭐" },
-                    { area: "Copperfield", price: "$465K", family: "⭐⭐⭐⭐" },
-                  ].map((item, index) => (
-                    <div key={index} className="flex justify-between items-center p-3 bg-green-50 rounded">
-                      <div>
-                        <span className="font-semibold">{item.area}</span>
-                        <div className="text-sm text-gray-600">{item.family}</div>
-                      </div>
-                      <span className="font-bold text-green-600">{item.price}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-4">Investment Property Hotspots</h3>
-                <div className="space-y-4">
-                  {[
-                    { area: "Beltline", price: "$385K", roi: "6.8%" },
-                    { area: "Eau Claire", price: "$425K", roi: "6.2%" },
-                    { area: "Hillhurst", price: "$565K", roi: "5.9%" },
-                    { area: "Mission", price: "$485K", roi: "6.1%" },
-                    { area: "Kensington", price: "$695K", roi: "5.4%" },
-                  ].map((item, index) => (
-                    <div key={index} className="flex justify-between items-center p-3 bg-blue-50 rounded">
-                      <div>
-                        <span className="font-semibold">{item.area}</span>
-                        <div className="text-sm text-gray-600">ROI: {item.roi}</div>
-                      </div>
-                      <span className="font-bold text-blue-600">{item.price}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="border-t border-gray-200 pt-6">
+              <h4 className="font-semibold text-gray-900 mb-3">Next Steps</h4>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Calculate your affordability using our professional tools</li>
+                <li>• Review your credit report and financial documentation</li>
+                <li>• Research Calgary neighborhoods within your budget range</li>
+                <li>• Consult with qualified mortgage professionals</li>
+              </ul>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Lead Capture Form */}
-          <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white rounded-xl p-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
-                <DollarSign className="w-8 h-8" />
-                Get Pre-Approved for Your Calgary Mortgage
-              </h2>
-              <p className="text-xl mb-6">
-                Professional mortgage guidance from licensed Alberta mortgage specialists. Get expert consultation and current market rates.
-              </p>
-              <div className="flex items-center justify-center gap-6 text-sm">
-                <span>✓ No credit check required</span>
-                <span>✓ Same-day pre-approval</span>
-                <span>✓ Rate hold for 120 days</span>
-              </div>
-            </div>
-            <LeadCaptureForm />
-          </section>
-        </div>
-        </div>
-        <Footer />
-      </div>
+      </ContentLayout>
     </>
   );
 };
