@@ -1,80 +1,75 @@
 # How Much Mortgage Can I Afford in Alberta
 
-Understanding your mortgage affordability is crucial when buying a home in Alberta. With competitive housing markets in Calgary and Edmonton, knowing your borrowing limits helps you set realistic expectations and make informed decisions.
+Determining your mortgage affordability in Alberta requires understanding Canadian lending standards, including the federal stress test and provincial considerations. This guide provides the calculation methods used by Alberta lenders.
 
-## The Basics of Mortgage Affordability
+## Canadian Debt Service Ratios
 
-In Canada, mortgage affordability is determined by two key debt service ratios:
+Alberta lenders use two key ratios to determine mortgage affordability:
 
-**Gross Debt Service (GDS) Ratio**: This measures your monthly housing costs as a percentage of your gross monthly income. Housing costs include mortgage payments, property taxes, heating, and 50% of condo fees (if applicable). For insured mortgages (less than 20% down payment), the maximum GDS ratio is 39%. For conventional mortgages (20% or more down payment), it's 45%.
+**Gross Debt Service (GDS) Ratio**: Your housing costs should not exceed 32% of your gross monthly income. Housing costs include:
+- Principal and interest payments
+- Property taxes
+- Heating costs
+- 50% of condo fees (if applicable)
 
-**Total Debt Service (TDS) Ratio**: This includes all your housing costs plus other monthly debt payments like credit cards, car loans, and lines of credit. The maximum TDS ratio is 44% for insured mortgages and 50% for conventional mortgages.
+**Total Debt Service (TDS) Ratio**: Your total monthly debt payments should not exceed 40% of your gross monthly income. This includes housing costs plus all other debt payments.
 
-## The Mortgage Stress Test
+## The Federal Stress Test
 
-Since 2018, all mortgage applications must pass the federal stress test. This means you must qualify at the higher of:
+Since 2018, all mortgage applications must qualify at the higher of:
+- The Bank of Canada's 5-year benchmark rate
 - Your contract rate plus 2%
-- The Bank of Canada's minimum qualifying rate (currently 5.25%)
 
-This stress test reduces most people's borrowing capacity by 15-20%, but it ensures you can handle potential rate increases.
+This stress test applies to all mortgage applications in Alberta, regardless of down payment amount.
 
 ## Alberta-Specific Considerations
 
-**Property Taxes**: Alberta has some of the lowest property tax rates in Canada. Calgary's mill rate is approximately 0.6-0.7%, while Edmonton's is around 0.9-1.0%. Lower property taxes mean more of your income can go toward the mortgage principal and interest.
+**Property Taxes**: Alberta property tax rates vary significantly by municipality. Calgary and Edmonton rates differ substantially from rural areas.
 
-**No Land Transfer Tax**: Unlike Ontario or BC, Alberta has no provincial land transfer tax, saving you thousands of dollars at closing. This allows you to put more money toward your down payment or closing costs.
+**Heating Costs**: Alberta's climate requires year-round heating considerations. Lenders typically estimate $150-250 monthly for heating costs.
 
-**Employment Stability**: Alberta's economy is tied to the energy sector, which can be cyclical. Lenders may scrutinize employment history more carefully if you work in oil and gas industries.
+**No Provincial Sales Tax**: Alberta's lack of PST provides more purchasing power compared to other provinces.
+
+## Calculation Example
+
+For a household with $80,000 annual income ($6,667 monthly):
+
+**GDS Calculation (32% limit)**:
+- Maximum housing costs: $2,133 monthly
+- Less property taxes ($250): $1,883
+- Less heating ($200): $1,683
+- Available for principal/interest: $1,683
+
+**Stress Test Application**:
+Using current stress test rate of approximately 7%, this translates to roughly $350,000 maximum mortgage amount with 20% down payment.
+
+## Income Documentation
+
+Alberta lenders require consistent income documentation:
+- T4 employees: Recent paystubs and Notice of Assessment
+- Self-employed: Two years of complete tax returns
+- Commission income: Two-year average
+- Rental income: Lease agreements and tax filings
 
 ## Down Payment Requirements
 
-The minimum down payment depends on the purchase price:
-- Homes under $500,000: 5% minimum
-- Homes $500,000-$999,999: 5% on the first $500,000, 10% on the remainder
-- Homes $1 million and above: 20% minimum
+**Minimum Down Payments**:
+- 5% for homes under $500,000
+- 5% on first $500,000, 10% on remaining portion
+- 20% for homes over $1 million
 
-## Calculating Your Maximum Mortgage
+**CMHC Insurance**: Required for down payments under 20%, with premiums ranging from 2.8% to 4.0% of the mortgage amount.
 
-To determine your maximum mortgage amount:
+## Pre-Approval Process
 
-1. **Calculate your gross monthly income**
-2. **List all monthly debt payments**
-3. **Estimate monthly housing costs** (property taxes, heating, condo fees)
-4. **Apply the stress test rate** to determine qualifying payment
-5. **Use the GDS and TDS ratios** to find your limits
+Getting pre-approved in Alberta involves:
+1. Income and debt verification
+2. Credit score assessment (typically 650+ required)
+3. Stress test calculation
+4. Rate hold (typically 90-120 days)
 
-## Tips to Increase Your Affordability
+## Professional Guidance
 
-**Pay Down Debt**: Reducing monthly debt payments directly increases your TDS capacity.
+While these calculations provide estimates, mortgage qualification involves numerous variables specific to your situation. Consider consulting with Alberta mortgage professionals who understand provincial regulations and can access multiple lender options.
 
-**Increase Your Down Payment**: A larger down payment means a smaller mortgage and potentially avoiding CMHC insurance.
-
-**Consider a Co-Signer**: Adding a co-signer with good credit and income can significantly increase your borrowing power.
-
-**Improve Your Credit Score**: A higher credit score can help you qualify for better rates, effectively increasing your affordability.
-
-## Regional Variations in Alberta
-
-**Calgary**: Home prices vary significantly by area and property type. Research different communities to understand local market conditions.
-
-**Edmonton**: Generally offers more affordable options than Calgary. The city provides diverse neighborhoods with varying price ranges.
-
-**Rural Alberta**: Significantly more affordable housing options, but consider employment opportunities and commuting costs.
-
-## Working with a Mortgage Professional
-
-Given Alberta's unique economic factors and varying local markets, working with a knowledgeable mortgage professional is essential. They can:
-- Navigate lender-specific requirements
-- Find the best rates for your situation
-- Explain local market conditions
-- Help structure your mortgage for flexibility
-
-## Conclusion
-
-Determining your mortgage affordability in Alberta requires understanding federal regulations, local market conditions, and your personal financial situation. Use online calculators as a starting point, but always consult with a qualified mortgage professional for personalized advice.
-
-Remember, the maximum amount you qualify for isn't necessarily what you should borrow. Leave room in your budget for unexpected expenses, rate increases, and life changes. A conservative approach will help ensure your homeownership experience remains positive for years to come.
-
----
-
-*This article is for educational purposes only. Consult a licensed mortgage professional for personalized advice tailored to your specific situation.*
+*This article provides educational information about mortgage affordability calculations in Alberta. Individual circumstances vary, and professional advice is recommended for mortgage decisions.*

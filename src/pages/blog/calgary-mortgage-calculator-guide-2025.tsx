@@ -26,19 +26,19 @@ const CalgaryMortgageGuide: React.FC = () => {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Calgary Mortgage Calculator: Complete 2025 Home Buying Guide
+              Calgary Mortgage Calculator Guide
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Calculate your Calgary home affordability with our comprehensive mortgage calculator. Get accurate estimates for your home buying budget.
+              Professional mortgage calculations for Calgary homebuyers. Accurate estimates using Canadian lending standards and Calgary market data.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
               <div className="flex items-center gap-1">
                 <Users className="w-4 h-4" />
-                <span>Free mortgage calculations</span>
+                <span>Professional mortgage tools</span>
               </div>
               <div className="flex items-center gap-1">
                 <TrendingUp className="w-4 h-4" />
-                <span>Updated with current market data</span>
+                <span>Current market rates</span>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@ const CalgaryMortgageGuide: React.FC = () => {
           <section className="bg-white rounded-xl shadow-lg p-8 mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
               <MapPin className="w-8 h-8 text-blue-600" />
-              Current Calgary Housing Market Overview
+              Calgary Market Reference Data
             </h2>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -84,7 +84,7 @@ const CalgaryMortgageGuide: React.FC = () => {
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <p className="text-blue-800 font-semibold">
-                💡 TIP: Understanding your maximum buying power helps you house hunt more effectively and make competitive offers when you find the right home.
+                Understanding Calgary's mortgage qualification requirements helps you prepare for the home buying process and determine realistic price ranges.
               </p>
             </div>
           </section>
@@ -97,9 +97,9 @@ const CalgaryMortgageGuide: React.FC = () => {
             </h2>
             
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-lg mb-6">
-              <h3 className="text-2xl font-bold mb-4">🚀 Interactive Calgary Mortgage Calculator</h3>
+              <h3 className="text-2xl font-bold mb-4">Calgary Mortgage Calculator</h3>
               <p className="text-lg mb-4">
-                Get instant results with current market data and qualifying rates. Accurate calculations based on Canadian mortgage rules.
+                Professional mortgage calculations using current qualification rates and Canadian lending standards. Trusted by Alberta homebuyers.
               </p>
               <a 
                 href="/calculators/affordability" 
@@ -263,7 +263,7 @@ const CalgaryMortgageGuide: React.FC = () => {
                 Get Pre-Approved for Your Calgary Mortgage
               </h2>
               <p className="text-xl mb-6">
-                Connect with licensed mortgage professionals for personalized advice. Free consultation + current rate information.
+                Professional mortgage guidance from licensed Alberta mortgage specialists. Get expert consultation and current market rates.
               </p>
               <div className="flex items-center justify-center gap-6 text-sm">
                 <span>✓ No credit check required</span>

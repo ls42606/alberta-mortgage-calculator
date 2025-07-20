@@ -26,10 +26,10 @@ const EdmontonMortgageGuide: React.FC = () => {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Edmonton Mortgage Calculator: Complete 2025 Home Buying Guide
+              Edmonton Mortgage Calculator Guide
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Calculate your Edmonton home affordability with our comprehensive mortgage calculator. Plan your home purchase with accurate estimates.
+              Professional mortgage calculations for Edmonton homebuyers. Accurate estimates using Canadian lending standards and Edmonton market data.
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
               <div className="flex items-center gap-1">
@@ -84,7 +84,7 @@ const EdmontonMortgageGuide: React.FC = () => {
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <p className="text-blue-800 font-semibold">
-                💡 TIP: Getting pre-approved helps you understand your budget and shows sellers you're a serious buyer in any market conditions.
+                Understanding Edmonton's mortgage qualification requirements helps you prepare for the home buying process and determine realistic price ranges.
               </p>
             </div>
           </section>
@@ -97,9 +97,9 @@ const EdmontonMortgageGuide: React.FC = () => {
             </h2>
             
             <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white p-8 rounded-lg mb-6">
-              <h3 className="text-2xl font-bold mb-4">🚀 Interactive Edmonton Mortgage Calculator</h3>
+              <h3 className="text-2xl font-bold mb-4">Edmonton Mortgage Calculator</h3>
               <p className="text-lg mb-4">
-                Edmonton-specific calculations including local property taxes and market considerations. Accurate estimates for your home buying planning.
+                Professional mortgage calculations using current qualification rates and Edmonton market considerations. Trusted by Alberta homebuyers.
               </p>
               <a 
                 href="/calculators/affordability" 

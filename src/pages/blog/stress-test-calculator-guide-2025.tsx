@@ -25,15 +25,15 @@ const StressTestCalculatorGuide: React.FC = () => {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Pass the Mortgage Stress Test: Guaranteed Qualification Strategies
+              Mortgage Stress Test Calculator Guide
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              😰 Don't panic! 73% of Albertans pass on first try. Use our proven strategies and calculator to guarantee your qualification.
+              Understanding the federal mortgage stress test requirements. Professional guidance on qualification strategies and calculations.
             </p>
-            <div className="bg-green-100 border border-green-400 rounded-lg p-4 max-w-2xl mx-auto mb-6">
-              <p className="text-green-800 font-semibold flex items-center justify-center gap-2">
+            <div className="bg-blue-100 border border-blue-400 rounded-lg p-4 max-w-2xl mx-auto mb-6">
+              <p className="text-blue-800 font-semibold flex items-center justify-center gap-2">
                 <Users className="w-5 h-5" />
-                2,456 Albertans passed the stress test using our calculator this month
+                Professional stress test calculations trusted by Alberta mortgage professionals
               </p>
             </div>
           </div>
@@ -92,9 +92,9 @@ const StressTestCalculatorGuide: React.FC = () => {
             </h2>
             
             <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-8 rounded-lg mb-8">
-              <h3 className="text-2xl font-bold mb-4">🚀 Interactive Stress Test Tool</h3>
+              <h3 className="text-2xl font-bold mb-4">Professional Stress Test Calculator</h3>
               <p className="text-lg mb-4">
-                Find out instantly if you'll pass. Get your maximum mortgage amount at the qualifying rate. Used by 500+ mortgage brokers.
+                Calculate your qualification at federal stress test rates. Professional tool using current Bank of Canada guidelines.
               </p>
               <a 
                 href="/calculators/stress-test" 
@@ -271,25 +271,25 @@ const StressTestCalculatorGuide: React.FC = () => {
           </section>
 
           {/* Anxiety Relief */}
-          <section className="bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl p-8 mb-8">
+          <section className="bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-xl p-8 mb-8">
             <div className="text-center">
-              <h2 className="text-3xl font-bold mb-4">Don't Panic - You Have Options!</h2>
+              <h2 className="text-3xl font-bold mb-4">Stress Test Qualification Options</h2>
               <div className="grid md:grid-cols-3 gap-6 mt-8">
                 <div className="text-center">
-                  <div className="text-4xl font-bold">73%</div>
-                  <div className="text-lg">Pass Rate in Alberta</div>
+                  <div className="text-4xl font-bold">GDS</div>
+                  <div className="text-lg">32% Maximum Ratio</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold">95%</div>
-                  <div className="text-lg">Our Client Success Rate</div>
+                  <div className="text-4xl font-bold">TDS</div>
+                  <div className="text-lg">40% Maximum Ratio</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold">100%</div>
-                  <div className="text-lg">Find a Solution</div>
+                  <div className="text-4xl font-bold">7%+</div>
+                  <div className="text-lg">Stress Test Rate</div>
                 </div>
               </div>
               <p className="text-xl mt-6">
-                Even if you fail the stress test today, we have backup plans to get you into a home within 6-12 months.
+                Understanding qualification requirements helps you prepare your mortgage application and explore appropriate lending options.
               </p>
             </div>
           </section>
@@ -299,7 +299,7 @@ const StressTestCalculatorGuide: React.FC = () => {
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-4">Get Your Stress Test Analysis + Pre-Approval</h2>
               <p className="text-xl mb-6">
-                🔥 Free stress test review includes: Qualification analysis, improvement strategies, and backup financing options
+                Professional stress test analysis includes qualification review, preparation strategies, and lending option guidance.
               </p>
               <div className="flex items-center justify-center gap-6 text-sm">
                 <span>✓ No credit check required</span>

@@ -25,14 +25,14 @@ const AffordabilityCalculatorGuide: React.FC = () => {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Mortgage Affordability Calculator: Complete Guide + Interactive Tool
+              Mortgage Affordability Calculator Guide
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              🔥 The mortgage affordability trick that saves buyers $50K+ on their first home. Used by 95% of successful Alberta homebuyers.
+              Professional guidance on using mortgage affordability calculators. Understand Canadian lending standards and qualification requirements.
             </p>
-            <div className="bg-yellow-100 border border-yellow-400 rounded-lg p-4 max-w-2xl mx-auto">
-              <p className="text-yellow-800 font-semibold">
-                ⚠️ WARNING: Using the wrong affordability calculation could approve you for $100K more than you can actually afford!
+            <div className="bg-blue-100 border border-blue-400 rounded-lg p-4 max-w-2xl mx-auto">
+              <p className="text-blue-800 font-semibold">
+                Understanding affordability calculations helps you determine realistic home price ranges and prepare for mortgage qualification.
               </p>
             </div>
           </div>
@@ -96,9 +96,9 @@ const AffordabilityCalculatorGuide: React.FC = () => {
             </h2>
             
             <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-8 rounded-lg mb-8">
-              <h3 className="text-2xl font-bold mb-4">🚀 Interactive Affordability Calculator</h3>
+              <h3 className="text-2xl font-bold mb-4">Professional Affordability Calculator</h3>
               <p className="text-lg mb-4">
-                Get your exact maximum home price in 30 seconds. Includes stress test, property taxes, and all Alberta-specific factors.
+                Calculate your maximum home price using Canadian lending standards. Includes stress test requirements and Alberta market factors.
               </p>
               <a 
                 href="/calculators/affordability" 
