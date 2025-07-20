@@ -7,8 +7,7 @@ Sitemap: https://albertamortgagecalculator.ca/sitemap.xml
 # Crawl-delay for bots (optional, helps server performance)
 Crawl-delay: 1
 
-# Block access to admin areas
-Disallow: /admin/
+# Block access to sensitive areas
 Disallow: /.netlify/
 Disallow: /api/
 

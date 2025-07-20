@@ -27,14 +27,7 @@ const BlogPost = lazy(() => import('./pages/blog/BlogPost'));
 // Lazy-loaded Other Pages
 const Contact = lazy(() => import('./pages/Contact'));
 
-// Lazy-loaded Admin Pages
-const ContentDashboard = lazy(() => import('./components/admin/ContentDashboard').then(module => ({ default: module.ContentDashboard })));
-const LeadsAdmin = lazy(() => import('./pages/admin/LeadsAdmin'));
-const LeadsAdminV2 = lazy(() => import('./pages/admin/LeadsAdminV2'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-
-// Auth Components (keep these synchronous for faster auth flow)
-import { AuthProvider, Login, ProtectedRoute, useAuth } from './components/auth';
 
 // Component to handle hash navigation and scroll to top
 const ScrollToTop: React.FC = () => {
@@ -63,8 +56,6 @@ function HomePage() {
 }
 
 const AppRoutes: React.FC = () => {
-  const { authState, login } = useAuth();
-
   return (
     <Routes>
       {/* Main Funnel Page */}
@@ -172,39 +163,6 @@ const AppRoutes: React.FC = () => {
         } 
       />
       
-      {/* Auth Routes */}
-      <Route 
-        path="/login" 
-        element={
-          <Login 
-            onLogin={login}
-            isAuthenticated={authState.isAuthenticated}
-          />
-        } 
-      />
-      
-      {/* Protected Admin Routes - Wrapped with Suspense */}
-      <Route 
-        path="/admin" 
-        element={
-          <ProtectedRoute isAuthenticated={authState.isAuthenticated}>
-            <Suspense fallback={<LoadingSpinner size="lg" message="Loading Admin Dashboard..." />}>
-              <ContentDashboard />
-            </Suspense>
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/admin/leads" 
-        element={
-          <ProtectedRoute isAuthenticated={authState.isAuthenticated}>
-            <Suspense fallback={<LoadingSpinner size="lg" message="Loading Leads Dashboard..." />}>
-              <LeadsAdminV2 />
-            </Suspense>
-          </ProtectedRoute>
-        } 
-      />
-      
       {/* 404 Page - Wrapped with Suspense */}
       <Route 
         path="*" 
@@ -220,12 +178,10 @@ const AppRoutes: React.FC = () => {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <ScrollToTop />
-        <AppRoutes />
-      </Router>
-    </AuthProvider>
+    <Router>
+      <ScrollToTop />
+      <AppRoutes />
+    </Router>
   );
 }
 

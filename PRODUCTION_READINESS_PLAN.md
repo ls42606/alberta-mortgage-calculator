@@ -11,8 +11,7 @@ Based on comprehensive audit, the site has **105+ code quality issues** and requ
 ```bash
 # Files to fix:
 - src/App.tsx (lines 81-82) - Add admin authentication
-- netlify/functions/leads.js (line 41) - Restrict CORS
-- api/leads.js (line 40) - Restrict CORS
+- Forms now use Netlify Forms - no custom functions needed
 ```
 
 **Task**: Create authentication wrapper for admin routes
@@ -127,10 +126,10 @@ grep -r "console.log" src/ --include="*.ts" --include="*.tsx"
 
 ### 9. Input Validation (HIGH)
 ```bash
-# Files to secure:
-- netlify/functions/leads.js
-- api/leads.js
-- All form components
+# Forms now secured with Netlify Forms:
+- Built-in validation and security
+- No custom function vulnerabilities
+- All form components use standard HTML validation
 ```
 
 **Task**: Add proper input validation

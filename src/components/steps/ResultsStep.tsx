@@ -188,6 +188,7 @@ const ResultsStep: React.FC<ResultsStepProps> = ({ formData }) => {
         {/* Enhanced CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <button 
+            onClick={() => window.location.href = '/#calculators'}
             className="flex items-center justify-center space-x-3 px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             aria-label="Explore additional mortgage calculation tools"
           >
@@ -196,6 +197,7 @@ const ResultsStep: React.FC<ResultsStepProps> = ({ formData }) => {
           </button>
           
           <button 
+            onClick={() => window.location.href = '/blog'}
             className="flex items-center justify-center space-x-3 px-6 py-3 border-2 border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-all duration-300"
             aria-label="Access educational resources about mortgages"
           >

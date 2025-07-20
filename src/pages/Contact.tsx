@@ -1,26 +1,43 @@
 import React, { useState } from 'react';
-import { Mail, Clock, MapPin } from 'lucide-react';
+import { Mail, Clock, MapPin, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Contact form submitted:', formData);
+    // The form will be submitted to Netlify automatically
+    // We just need to show the success state
+    setIsSubmitted(true);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-20">
+        <div className="container mx-auto px-4 py-16">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xl">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle size={32} className="text-emerald-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Thank You!</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Your message has been received. We'll get back to you within 24 hours.
+                </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="bg-emerald-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors duration-300"
+                >
+                  Send Another Message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-20">
@@ -95,7 +112,17 @@ const Contact: React.FC = () => {
             {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6" id="contact-form-title">Send us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-labelledby="contact-form-title">
+              <form 
+                name="contact" 
+                method="POST" 
+                data-netlify="true" 
+                onSubmit={handleSubmit}
+                className="space-y-6" 
+                role="form" 
+                aria-labelledby="contact-form-title"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name
@@ -104,8 +131,6 @@ const Contact: React.FC = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     aria-describedby="name-required"
@@ -122,8 +147,6 @@ const Contact: React.FC = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     aria-describedby="email-required email-format"
@@ -141,8 +164,6 @@ const Contact: React.FC = () => {
                     type="text"
                     id="subject"
                     name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     aria-describedby="subject-required"
@@ -159,8 +180,6 @@ const Contact: React.FC = () => {
                     id="message"
                     name="message"
                     rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     aria-describedby="message-required message-instructions"

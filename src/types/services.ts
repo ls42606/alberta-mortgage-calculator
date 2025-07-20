@@ -206,28 +206,20 @@ export interface ExternalLink {
   isExternal: boolean;
 }
 
-// Form Types
-export interface LeadFormSubmission {
-  personalInfo: {
-    name: string;
-    email: string;
-    phone: string;
-  };
-  propertyInfo: {
-    propertyValue: number;
-    downPayment: number;
-    location: string;
-    propertyType: string;
-  };
-  financialInfo: {
-    income: number;
-    creditScore: number;
-    employmentType: string;
-  };
-  additionalInfo: {
-    notes?: string;
-    timeframe?: string;
-    preferredContact?: 'email' | 'phone';
-  };
-  calculationResults?: CalculationResults;
+// Simple form types for Netlify Forms
+export interface SimpleLeadForm {
+  name: string;
+  email: string;
+  'mortgage-amount'?: string;
+  message?: string;
+  source?: string;
+  'calculator-type'?: string;
+  'calculation-results'?: string;
+}
+
+export interface SimpleContactForm {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
 }
