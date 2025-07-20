@@ -53,8 +53,8 @@ const CalculatorLayout: React.FC<CalculatorLayoutProps> = ({
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
         <Header />
         
-        {/* Hero Section */}
-        <section className="pt-20 sm:pt-24 lg:pt-32 pb-8 sm:pb-12 lg:pb-16 bg-gradient-to-br from-white via-blue-50/20 to-emerald-50/20 relative overflow-hidden">
+        {/* Hero Section - Fixed mobile spacing */}
+        <section className="pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 lg:pb-16 bg-gradient-to-br from-white via-blue-50/20 to-emerald-50/20 relative overflow-hidden">
           <div className="absolute inset-0 opacity-30">
             <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-emerald-500/5 to-brand-blue/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-brand-gold/5 to-emerald-500/5 rounded-full blur-3xl"></div>

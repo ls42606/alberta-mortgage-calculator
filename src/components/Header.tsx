@@ -3,17 +3,18 @@ import { Menu, X, BookOpen } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { NavigationLink } from '../types/services';
 
-interface HeaderNavItem extends NavigationLink {
-  name: string;
-  type?: 'scroll' | 'link';
-  icon?: React.ElementType;
-}
+// Legacy interface - keeping for potential future use
+// interface HeaderNavItem extends NavigationLink {
+//   name: string;
+//   type?: 'scroll' | 'link';
+//   icon?: React.ElementType;
+// }
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate(); // Commented out as we use Link components instead
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,23 +32,44 @@ const Header: React.FC = () => {
 
   const isHomePage = location.pathname === '/';
 
-  const navItems = [
-    { 
-      name: 'Calculators', 
-      href: '#calculators',
-      type: 'scroll'
-    },
-    { 
-      name: 'News', 
-      href: '/blog', 
-      type: 'link', 
-      icon: BookOpen 
-    },
-    { 
-      name: 'Contact', 
-      href: '#contact',
-      type: 'scroll'
-    },
+  // Legacy navItems - keeping for potential future use
+  // const navItems = [
+  //   { 
+  //     name: 'Calculators', 
+  //     href: '#calculators',
+  //     type: 'scroll'
+  //   },
+  //   { 
+  //     name: 'Resources', 
+  //     href: '/blog', 
+  //     type: 'link', 
+  //     icon: BookOpen 
+  //   },
+  //   { 
+  //     name: 'Contact', 
+  //     href: '/contact',
+  //     type: 'link'
+  //   },
+  // ];
+
+  const calculatorItems = [
+    { name: 'Mortgage Payment', href: '/calculators/mortgage-payment' },
+    { name: 'Affordability', href: '/calculators/affordability' },
+    { name: 'Stress Test', href: '/calculators/stress-test' },
+    { name: 'Refinance', href: '/calculators/refinance' },
+    { name: 'Prepayment', href: '/calculators/prepayment' },
+    { name: 'HELOC', href: '/calculators/heloc' },
+    { name: 'Commercial', href: '/calculators/commercial' },
+    { name: 'Debt Consolidation', href: '/calculators/debt-consolidation' },
+    { name: 'Land Transfer Tax', href: '/calculators/land-transfer-tax' }
+  ];
+
+  const resourceItems = [
+    { name: 'Calgary Mortgage Guide', href: '/resources/calgary-mortgage-calculator-guide-2025' },
+    { name: 'Edmonton Mortgage Guide', href: '/resources/edmonton-mortgage-calculator-guide-2025' },
+    { name: 'Affordability Guide', href: '/tools/affordability-calculator-explained' },
+    { name: 'Stress Test Guide', href: '/resources/mortgage-stress-test-pass-guaranteed' },
+    { name: 'Blog Articles', href: '/blog' }
   ];
 
   const scrollToSection = (href: string) => {
@@ -69,38 +91,39 @@ const Header: React.FC = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const handleNavClick = (item: HeaderNavItem, e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsMobileMenuOpen(false);
-    
-    if (item.type === 'scroll') {
-      if (isHomePage) {
-        // On home page, scroll to section
-        scrollToSection(item.href);
-      } else {
-        // On other pages, navigate to home first, then scroll
-        navigate('/');
-        setTimeout(() => {
-          const elementId = item.href.replace('#', '');
-          const element = document.getElementById(elementId);
-          if (element) {
-            const headerHeight = 80;
-            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - headerHeight;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-          }
-        }, 100);
-      }
-    } else if (item.type === 'link') {
-      if (item.href.startsWith('/')) {
-        // Use React Router for internal links
-        navigate(item.href);
-      } else {
-        // Open external links in new tab
-        window.open(item.href, '_blank');
-      }
-    }
-  };
+  // Legacy handleNavClick - keeping for potential future use
+  // const handleNavClick = (item: HeaderNavItem, e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   setIsMobileMenuOpen(false);
+  //   
+  //   if (item.type === 'scroll') {
+  //     if (isHomePage) {
+  //       // On home page, scroll to section
+  //       scrollToSection(item.href);
+  //     } else {
+  //       // On other pages, navigate to home first, then scroll
+  //       navigate('/');
+  //       setTimeout(() => {
+  //         const elementId = item.href.replace('#', '');
+  //         const element = document.getElementById(elementId);
+  //         if (element) {
+  //           const headerHeight = 80;
+  //           const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+  //           const offsetPosition = elementPosition - headerHeight;
+  //           window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+  //         }
+  //       }, 100);
+  //     }
+  //   } else if (item.type === 'link') {
+  //     if (item.href.startsWith('/')) {
+  //       // Use React Router for internal links
+  //       navigate(item.href);
+  //     } else {
+  //       // Open external links in new tab
+  //       window.open(item.href, '_blank');
+  //     }
+  //   }
+  // };
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -166,32 +189,62 @@ const Header: React.FC = () => {
           </a>
 
           {/* Desktop Navigation - Fixed */}
-          <nav className="hidden lg:flex items-center space-x-4" role="navigation" aria-label="Main navigation">
-            {navItems.map((item) => (
-              item.type === 'scroll' ? (
-                <button
-                  key={item.name}
-                  onClick={(e) => handleNavClick(item, e)}
-                  className="text-gray-700 hover:text-brand-navy font-semibold transition-all duration-300 relative group flex items-center space-x-2 px-3 py-2"
-                  aria-label={`Navigate to ${item.name} section`}
-                >
-                  {item.icon && <item.icon size={16} className="flex-shrink-0" />}
-                  <span>{item.name}</span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-600 to-brand-blue transition-all duration-300 group-hover:w-full"></span>
-                </button>
-              ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 hover:text-brand-navy font-semibold transition-all duration-300 relative group flex items-center space-x-2 px-3 py-2"
-                >
-                  {item.icon && <item.icon size={16} className="flex-shrink-0" />}
-                  <span>{item.name}</span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-600 to-brand-blue transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              )
-            ))}
+          <nav className="hidden lg:flex items-center space-x-2" role="navigation" aria-label="Main navigation">
+            {/* Calculators Dropdown */}
+            <div className="relative group">
+              <button className="text-gray-700 hover:text-brand-navy font-semibold transition-all duration-300 relative flex items-center space-x-2 px-3 py-2">
+                <span>Calculators</span>
+                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  {calculatorItems.map((calc) => (
+                    <Link
+                      key={calc.name}
+                      to={calc.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-navy transition-colors"
+                    >
+                      {calc.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Resources Dropdown */}
+            <div className="relative group">
+              <button className="text-gray-700 hover:text-brand-navy font-semibold transition-all duration-300 relative flex items-center space-x-2 px-3 py-2">
+                <BookOpen size={16} className="flex-shrink-0" />
+                <span>Resources</span>
+                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="py-2">
+                  {resourceItems.map((resource) => (
+                    <Link
+                      key={resource.name}
+                      to={resource.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-brand-navy transition-colors"
+                    >
+                      {resource.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Link */}
+            <Link
+              to="/contact"
+              className="text-gray-700 hover:text-brand-navy font-semibold transition-all duration-300 relative group flex items-center space-x-2 px-3 py-2"
+            >
+              <span>Contact</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-600 to-brand-blue transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             
 
             {/* Updated CTA Button */}
@@ -216,33 +269,52 @@ const Header: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile Menu - Improved touch targets */}
+        {/* Mobile Menu - Improved with full navigation */}
         {isMobileMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-200 bg-white/95 backdrop-blur-md animate-fade-in" id="mobile-menu" role="navigation" aria-label="Mobile navigation menu">
-            <div className="space-y-2">
-              {navItems.map((item) => (
-                item.type === 'scroll' ? (
-                  <button
-                    key={item.name}
-                    onClick={(e) => handleNavClick(item, e)}
-                    className="block w-full text-left text-gray-700 hover:text-brand-navy font-semibold py-4 px-4 hover:bg-gray-50 rounded-lg transition-all duration-300 flex items-center space-x-3 min-h-[48px]"
-                    aria-label={`Navigate to ${item.name} section`}
-                  >
-                    {item.icon && <item.icon size={18} className="flex-shrink-0" />}
-                    <span className="text-base">{item.name}</span>
-                  </button>
-                ) : (
+            <div className="space-y-2 max-h-96 overflow-y-auto">
+              {/* Calculators Section */}
+              <div>
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-2">Calculators</div>
+                {calculatorItems.map((calc) => (
                   <Link
-                    key={item.name}
-                    to={item.href}
+                    key={calc.name}
+                    to={calc.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-left text-gray-700 hover:text-brand-navy font-semibold py-4 px-4 hover:bg-gray-50 rounded-lg transition-all duration-300 flex items-center space-x-3 min-h-[48px]"
+                    className="block w-full text-left text-gray-700 hover:text-brand-navy font-medium py-3 px-6 hover:bg-gray-50 rounded-lg transition-all duration-300 min-h-[44px] text-sm"
                   >
-                    {item.icon && <item.icon size={18} className="flex-shrink-0" />}
-                    <span className="text-base">{item.name}</span>
+                    {calc.name}
                   </Link>
-                )
-              ))}
+                ))}
+              </div>
+
+              {/* Resources Section */}
+              <div className="border-t border-gray-100 pt-2">
+                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-4 py-2">Resources</div>
+                {resourceItems.map((resource) => (
+                  <Link
+                    key={resource.name}
+                    to={resource.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block w-full text-left text-gray-700 hover:text-brand-navy font-medium py-3 px-6 hover:bg-gray-50 rounded-lg transition-all duration-300 min-h-[44px] text-sm"
+                  >
+                    {resource.name}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Contact */}
+              <div className="border-t border-gray-100 pt-2">
+                <Link
+                  to="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-gray-700 hover:text-brand-navy font-semibold py-4 px-4 hover:bg-gray-50 rounded-lg transition-all duration-300 min-h-[48px] text-base"
+                >
+                  Contact
+                </Link>
+              </div>
+
+              {/* CTA Button */}
               <div className="pt-4 border-t border-gray-200">
                 <button
                   onClick={handleCTAClick}

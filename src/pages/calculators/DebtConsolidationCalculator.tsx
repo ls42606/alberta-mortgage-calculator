@@ -16,7 +16,7 @@ const DebtConsolidationCalculator: React.FC = () => {
   const [mortgageBalance, setMortgageBalance] = useState(400000);
   const [currentMortgagePayment, setCurrentMortgagePayment] = useState(2500);
   const [newMortgageRate, setNewMortgageRate] = useState(5.8);
-  const [amortization, setAmortization] = useState(25);
+  const [amortization] = useState(25);
   const [annualIncome, setAnnualIncome] = useState(95000);
   const [propertyTaxes, setPropertyTaxes] = useState(4000);
   const [heatingCosts, setHeatingCosts] = useState(150);

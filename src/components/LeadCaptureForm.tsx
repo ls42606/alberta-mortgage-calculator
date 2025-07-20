@@ -4,7 +4,7 @@ import { User, Send, CheckCircle } from 'lucide-react';
 interface LeadCaptureFormProps {
   source?: string;
   calculatorType?: string;
-  calculationResults?: any;
+  calculationResults?: Record<string, unknown>;
   onClose?: () => void;
 }
 

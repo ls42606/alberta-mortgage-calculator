@@ -23,6 +23,10 @@ const LandTransferTaxCalculator = lazy(() => import('./pages/calculators/LandTra
 // Lazy-loaded Blog Pages
 const BlogIndex = lazy(() => import('./pages/blog/BlogIndex'));
 const BlogPost = lazy(() => import('./pages/blog/BlogPost'));
+const CalgaryMortgageGuide = lazy(() => import('./pages/blog/calgary-mortgage-calculator-guide-2025'));
+const EdmontonMortgageGuide = lazy(() => import('./pages/blog/edmonton-mortgage-calculator-guide-2025'));
+const AffordabilityCalculatorGuide = lazy(() => import('./pages/blog/affordability-calculator-explained-guide'));
+const StressTestCalculatorGuide = lazy(() => import('./pages/blog/stress-test-calculator-guide-2025'));
 
 // Lazy-loaded Other Pages
 const Contact = lazy(() => import('./pages/Contact'));
@@ -149,6 +153,40 @@ const AppRoutes: React.FC = () => {
         element={
           <Suspense fallback={<LoadingSpinner size="lg" message="Loading Article..." />}>
             <BlogPost />
+          </Suspense>
+        } 
+      />
+      
+      {/* Content Pages - Modern URL Structure */}
+      <Route 
+        path="/resources/calgary-mortgage-calculator-guide-2025" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Calgary Guide..." />}>
+            <CalgaryMortgageGuide />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/resources/edmonton-mortgage-calculator-guide-2025" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Edmonton Guide..." />}>
+            <EdmontonMortgageGuide />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/tools/affordability-calculator-explained" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Calculator Guide..." />}>
+            <AffordabilityCalculatorGuide />
+          </Suspense>
+        } 
+      />
+      <Route 
+        path="/resources/mortgage-stress-test-pass-guaranteed" 
+        element={
+          <Suspense fallback={<LoadingSpinner size="lg" message="Loading Stress Test Guide..." />}>
+            <StressTestCalculatorGuide />
           </Suspense>
         } 
       />

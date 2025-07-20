@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Clock, MapPin, CheckCircle } from 'lucide-react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Contact: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -13,7 +15,9 @@ const Contact: React.FC = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-20">
+      <>
+        <Header />
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-24">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-xl">
@@ -35,12 +39,16 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+        <Footer />
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-24">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -201,7 +209,9 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 

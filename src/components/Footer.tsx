@@ -24,10 +24,12 @@ const Footer: React.FC = () => {
     {
       title: 'Resources',
       links: [
-        { name: 'Mortgage Calculator', href: '#calculator', action: 'scroll' },
         { name: 'All Calculators', href: '#calculators', action: 'scroll' },
-        { name: 'Market Analysis', href: '/blog', action: 'link' },
-        { name: 'Professional Guidance', href: '#calculator', action: 'scroll' },
+        { name: 'Calgary Guide', href: '/resources/calgary-mortgage-calculator-guide-2025', action: 'link' },
+        { name: 'Edmonton Guide', href: '/resources/edmonton-mortgage-calculator-guide-2025', action: 'link' },
+        { name: 'Affordability Guide', href: '/tools/affordability-calculator-explained', action: 'link' },
+        { name: 'Stress Test Guide', href: '/resources/mortgage-stress-test-pass-guaranteed', action: 'link' },
+        { name: 'Blog Articles', href: '/blog', action: 'link' },
       ],
     },
     {

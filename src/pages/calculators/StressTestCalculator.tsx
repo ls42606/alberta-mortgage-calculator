@@ -8,7 +8,7 @@ const StressTestCalculator: React.FC = () => {
   const [monthlyDebts, setMonthlyDebts] = useState(500);
   const [downPayment, setDownPayment] = useState(100000);
   const [contractRate, setContractRate] = useState(5.5);
-  const [amortization, setAmortization] = useState(25);
+  const [amortization] = useState(25);
   const [propertyTax, setPropertyTax] = useState(3000);
   const [heatingCosts, setHeatingCosts] = useState(150);
   
